@@ -2,7 +2,7 @@ section.content-section {
   border-bottom: 1px solid $gray-300;
   padding-top: 5rem !important;
   padding-bottom: 5rem !important;
-  .resume-item {
+  .content-item {
     .resume-content {}
     .resume-date {
       min-width: none;
@@ -12,7 +12,7 @@ section.content-section {
 @media (min-width: 768px) {
   section.content-section {
     min-height: 100vh;
-    .resume-item {
+    .content-item {
       .resume-content {}
       .resume-date {
         min-width: 18rem;

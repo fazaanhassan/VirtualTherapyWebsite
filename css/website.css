@@ -110,7 +110,7 @@ section.content-section {
   padding-bottom: 5rem !important;
 }
 
-section.content-section .resume-item .resume-date {
+section.content-section .content-item .resume-date {
   min-width: none;
 }
 
@@ -118,7 +118,7 @@ section.content-section .resume-item .resume-date {
   section.content-section {
     min-height: 100vh;
   }
-  section.content-section .resume-item .resume-date {
+  section.content-section .content-item .resume-date {
     min-width: 18rem;
   }
 }
@@ -151,3 +151,16 @@ a:hover, a:focus, a:active {
   text-align: justify;
 }
 
+div img{ 
+  display: inline-block;
+  padding: 1px;
+
+
+}
+ul.white-space-fix li {
+  margin-right: -4px;
+}
+
+b {
+  color: black;
+}

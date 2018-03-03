@@ -91,14 +91,14 @@ section.content-section{
     padding-top:5rem!important;
     padding-bottom:5rem!important
 }
-section.content-section .resume-item .resume-date{
+section.content-section .content-item .resume-date{
     min-width:none
 }
 @media (min-width:768px){
     section.content-section{
         min-height:100vh
     }
-    section.content-section .resume-item .resume-date{
+    section.content-section .content-item .resume-date{
         min-width:18rem
     }
 }
