@@ -154,7 +154,12 @@ a:hover, a:focus, a:active {
 div img{ 
   display: inline-block;
   padding: 1px;
+  margin: 20px;
 
+
+}
+.description ul li {
+  margin: 50px;
 
 }
 ul.white-space-fix li {
