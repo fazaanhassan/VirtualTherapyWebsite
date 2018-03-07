@@ -1,5 +1,5 @@
 body {
-  font-family: 'Open Sans', serif;
+  font-family:'Helvetica', 'monospace', 'Georgia','Times New Roman','Courier','Open Sans', serif;
   padding-top: 54px;
   color: #868e96;
 }
@@ -8,6 +8,8 @@ body {
   body {
     padding-top: 0;
     padding-left: 17rem;
+    padding-right: 4rem;
+
   }
 }
 
@@ -17,7 +19,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: 'Saira Extra Condensed', serif;
+  font-family: 'Catamaran','Saira Extra Condensed', serif;
   font-weight: 700;
   text-transform: uppercase;
   color: #343a40;
@@ -72,7 +74,7 @@ h2 {
     left: 0;
     display: flex;
     flex-direction: column;
-    width: 17rem;
+    width: 15rem;
     height: 100vh;
   }
   #sideNav .navbar-brand {
@@ -105,7 +107,7 @@ h2 {
 }
 
 section.content-section {
-  border-bottom: 1px solid #dee2e6;
+  border-bottom: 1px solid #000000;
   padding-top: 5rem !important;
   padding-bottom: 5rem !important;
 }
@@ -125,8 +127,8 @@ section.content-section .content-item .resume-date {
 
 @media (min-width: 992px) {
   section.content-section {
-    padding-top: 3rem !important;
-    padding-bottom: 3rem !important;
+    padding-top: 2rem !important;
+    padding-bottom: 2rem !important;
   }
 }
 
@@ -151,11 +153,19 @@ a:hover, a:focus, a:active {
   text-align: justify;
 }
 
+.toLeft {
+  text-align: left;
+}
+
 div img{ 
   display: inline-block;
   padding: 1px;
   margin: 20px;
+}
 
+.profiles img{
+  padding: 1px;
+  margin: 75px;
 
 }
 .description ul li {
