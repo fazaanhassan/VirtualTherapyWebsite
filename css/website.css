@@ -62,8 +62,8 @@ h2 {
 }
 
 #sideNav .navbar-nav .nav-item .nav-link {
-  font-weight: 600;
-  text-transform: uppercase;
+  font-weight: 500;
+  /* text-transform: uppercase; */
 }
 
 @media (min-width: 992px) {
@@ -76,6 +76,7 @@ h2 {
     flex-direction: column;
     width: 15rem;
     height: 100vh;
+    box-shadow: 9px 10px 5px rgb(198, 192, 192);
   }
   #sideNav .navbar-brand {
     display: flex;
@@ -107,9 +108,10 @@ h2 {
 }
 
 section.content-section {
-  border-bottom: 1px solid #000000;
+  border-bottom: 2px solid rgb(198, 192, 192);
   padding-top: 5rem !important;
   padding-bottom: 5rem !important;
+  box-shadow: 0 9px 6px -2px rgb(198, 192, 192);
 }
 
 section.content-section .content-item .resume-date {
@@ -177,5 +179,10 @@ ul.white-space-fix li {
 }
 
 b {
+  color: black;
+}
+
+.copy {
+  font-size: 10px;
   color: black;
 }
