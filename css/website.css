@@ -35,10 +35,11 @@ h2 {
 }
 
 .subheading {
-  text-transform: uppercase;
-  font-weight: 500;
-  font-family: 'Saira Extra Condensed', serif;
-  font-size: 1.35rem;
+  /* text-transform: uppercase; */
+  font-weight: 800;
+  font-family: 'Arial','Times New Roman','serif';
+  font-style: italic;
+  font-size: 1rem;
 }
 
 .list-social-icons a {
@@ -135,11 +136,11 @@ section.content-section .content-item .resume-date {
 }
 
 .bg-primary {
-  background-color: #BD5D38 !important;
+  background-color: #00a1f1 !important;
 }
 
 .text-primary {
-  color: #BD5D38 !important;
+  color: #00a1f1 !important;
 }
 
 a {
@@ -184,5 +185,5 @@ b {
 
 .copy {
   font-size: 10px;
-  color: black;
+  color: rgb(207, 202, 202);
 }
