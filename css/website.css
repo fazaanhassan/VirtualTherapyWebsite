@@ -182,7 +182,9 @@ ul.white-space-fix li {
 b {
   color: black;
 }
-
+.b {
+  font-style: bold;
+}
 .copy {
   font-size: 10px;
   color: rgb(207, 202, 202);
