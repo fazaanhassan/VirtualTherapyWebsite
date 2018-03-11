@@ -940,9 +940,49 @@
 
           <div class="content-item d-flex flex-column flex-md-row">
               <div class="resume-content mr-auto">
-                <h3 class="mb-0">Potential Programming languages</h3>
-                <div class="subheading mb-3">Language 1</div>
-                <div class="subheading mb-3">Language 2</div>
+                <h3 class="mb-2">Potential Programming languages</h3>
+                <center> <b> Front End Development</b></center>
+                <p class="toJustify">
+                    <ul>
+                      <li> Boo </li>
+                      <li> JavaScript</li>
+                      <li> C#</li>
+                    </ul>
+
+                    
+                </p>
+                <p class="toJustify">
+                    Boo language is like python, which it makes easy to learn and use, but there were few documentations for programming Kinect with Boo.
+                    The last 2 are the most popular henceforth <b> we have chosen to program in C#. </b> Reason being is, most we are familiar with object orientated programming such as Java and have extensive knowledge of how to use classes and objects. We are grateful to have C# as an option from unity. However, If we would have written in JavaScript, there would have been issues with script compilation for premade libraries which we will discuss later below. Apart from this, there is no performance advantages of one language over the other.  
+
+                </p>
+
+                <center> <b> Server Side Development</b></center>
+                <p class="toJustify">
+                  <ul>
+                    <li> Node JS</li>
+                    <li> PHP</li>
+                    <li> Ruby</li>
+                  </ul>
+                </p>
+                <p class="toJustify">
+                    <b> For the server part we have used Node JS.</b> Alternatives include Django, PHP, Ruby, but node.js has multiple advantages over all.
+                    We have decided to use Node JS due to previous experience. This saved time as we did not have to learn a new backend programming language. It also allows the construction of real time web apps, in which both the client and the server can initiate requests. Being an extension of javascript the documentation provided showed that connection of database drivers were can be easily implemented. Also, it can handle a huge number of simultaneous requests which means high scalability. This is important as Microsoft would like to further develop on the application in the future.
+                    
+                </p>
+                <center> <b> Potential Databases</b></center>
+                <div class="subheading mb-2"> MySQL Relational Database:
+                  </div>
+                  <p class="toJustify">
+                      MySQL is a powerful database, known for high performance and data security. It is one of the best options for complex queries. However, data must follow the same structure. The structure of our data might change, based on the movement of the user. This means the relationship between joints and their number will differ a lot [7]. Also, we have a lot of relationships between the data which will mean introducing many new tables and linking them together in the most efficient manner. Due to this, running queries on this form of data will be expensive. 
+
+                  </p>
+                  <div class="subheading mb-2"> MongoDB
+                    </div>
+                    <p class="toJustify">
+                        This database represents an advantage for us because it allows the structure of data to change. Each pose we save is stored as a JSON styled document, making it easier to process. Also, this database scales horizontally, in comparison with first which scales vertically. This means that more traffic is handled by adding more servers. This is more appropriate for out type of data. Considering this we decided to choose Mongo Db [8].
+  
+                    </p>
               </div>
             </div>
 
@@ -991,17 +1031,26 @@
                               <div class="subheading mb-2"> Microsoft Runtime Speech recognition
                                 </div>
                               <p class="toJustify">
-                                  We needed a service for speech recognition to implement the voice command functionality.  A disadvantage is that the user must install them on the local device to make our app work. <b> We have chosen this SDK</b>because it runs directly in windows 10. It does not require any calls over the internet so the delay in response time is minimal. This is an important factor for a reliable User Interface [11].
+                                  We needed a service for speech recognition to implement the voice command functionality.  A disadvantage is that the user must install them on the local device to make our app work. <b> We have chosen this SDK</b> because it runs directly in windows 10. It does not require any calls over the internet so the delay in response time is minimal. This is an important factor for a reliable User Interface [11].
         
                                 </p>
                               <center> <b> 3D Sound Effect</b></center>
                               
-                              <div class="subheading mb-2"> Microsoft Runtime Speech recognition
+                              <div class="subheading mb-2"> Oculus Rift Spatializer
+
                                 </div>
                               <p class="toJustify">
-        
+                                  This plugin can be used in many game engines and has good documentation. Also, it offers the possibility to customize the effects of the sound. It has the disadvantage that it does not imitate the reflexion of sounds from walls. In this case the virtual experience we are trying to achieve will not be immersive. 
+
                                 </p>
 
+                                <div class="subheading mb-2"> Microsoft HRTF (Head related transfer function) spatializer
+
+                                  </div>
+                                <p class="toJustify">
+                                    Unity already contains this plugin, making it easy to use and configure. <b> We have chosen the Microsoft HRTF</b>, because it offers functions to amplify and reduce noise for different room sizes. Sounds can be heard from left and right directions with walls also reflecting noise signals. Because of this the user can easily locate the source of a given sound. This is a clear advantage over the Oculus rift technology making it suitable to achieve our requirements.
+
+                                  </p>
                     </div>
 
                 </div>
@@ -1010,9 +1059,26 @@
               <div class="content-item d-flex flex-column flex-md-row">
                   <div class="resume-content mr-auto">
                     <h3 class="mb-0">algorithms</h3>
-                    <div class="subheading mb-3">Language 1</div>
-                    <div class="subheading mb-3">Language 2</div>
+                    <p class="toJustify">
+                        Pose prediction algorithms are vital for any VR/AR application. Only using the current position of a user to compute new skeleton tracking images for each frame might result in desynchronization [12].
+                        To solve this, we consider some well-known mathematical algorithms. 
+
+
+                    </p>
+                    <div class="subheading mb-3">Exponential Filter</div>
+                    <p class="toJustify">
+                        This is a smoothing filter used for data when a sudden change appears. It applies one exponential function to smooth the input from Kinect. After a period of experimentation, we had observed that this filter perfectly follows the data trend in the abstract movement of joints in motion [13].
+
+
+                    </p>
+                    <div class="subheading mb-3">Double Exponential Filter</div>
+                    <p class="toJustify">
+                        This method predicts various joint positions using a simple linear regression function. We try to estimate the parameters of the equation when studying the movement of the user. The difference between parameters decreases exponentially over time, prioritising the new data from sensor.  <b> This method is preferred because, </b> by applying the exponential function twice the data follows the trend of the real input [12].
+
+
+                    </p>
                   </div>
+                
                 </div>
 
           <div class="content-item d-flex flex-column flex-md-row">
@@ -1142,7 +1208,40 @@
 
       <section class="content-section p-3 p-lg-5 d-flex flex-column" id="References">
         <div class="my-auto">
-          <h2 class="mb-5">References</h2>
+          <h2 class="mb-3">References</h2>
+          <ul class="list-unstyled">
+            <li>
+                [1] Polhemus Fast-Track: Available at: <a href="https://polhemus.com/motion-tracking/all-trackers/fastrak#collapseOne">https://polhemus.com/</a>
+
+            </li>
+            <li>[2] XSENS: Available at: <a href="https://www.xsens.com/tags/sports-biomechanics/">https://www.xsens.com/tags/sports-biomechanics/</a>
+              </li>
+              <li>[3] NOTCH: Available at: <a href="https://wearnotch.com/">https://wearnotch.com/</a>
+                </li>
+                <li> [4] Kinect: Available at: <a href="https://msdn.microsoft.com/en-us/library/dn758675.aspx">https://msdn.microsoft.com/en-us/library/dn758675.aspx</a>
+                  </li>
+                  <li> [5] Paper Kinect: Available at: <a href="https://www.cla.purdue.edu/academic/vpa/ad/act/resources/ad41700_barrett_kinect_unity.pdf">https://www.cla.purdue.edu/academic/vpa/ad/act/resources/ad41700_barrett_kinect_unity.pdf</a>
+                    </li>
+                    <li>[6] OpenNi: Available at: <a href="https://s3.amazonaws.com/com.occipital.openni/OpenNI_Programmers_Guide.pdf">https://s3.amazonaws.com/com.occipital.openni/OpenNI_Programmers_Guide.pdf</a>
+                      </li>
+                      <li>[7] MySQL: Available at: <a href="https://dev.mysql.com/doc/refman/8.0/en/">https://dev.mysql.com/doc/refman/8.0/en/</a>
+                        </li>
+                        <li>
+                            [8] Mongo Db: Available at: <a href="https://docs.mongodb.com/manual/">https://docs.mongodb.com/manual/</a>
+
+                        </li>
+                        <li> [9] OpenPose: Available at: <a href="https://github.com/CMU-Perceptual-Computing-Lab/openpose/blob/master/README.md">https://github.com/CMU-Perceptual-Computing-Lab/openpose/blob/master/README.md </a>
+                          </li>
+                          <li> [10] SMPLify: Available at: <a href=" http://files.is.tue.mpg.de/black/papers/BogoECCV2016.pdf"> http://files.is.tue.mpg.de/black/papers/BogoECCV2016.pdf</a>
+                            </li>
+                            <li> [11] Speech Microsoft: Available at: <a href=" https://msdn.microsoft.com/en-us/library/jj127860.aspx"> https://msdn.microsoft.com/en-us/library/jj127860.aspx </a>
+                              </li>
+                              <li>[12] Joint Filters: Available at: <a href=" https://msdn.microsoft.com/en-us/library/jj127860.aspx"> https://msdn.microsoft.com/en-us/library/jj127860.aspx </a>
+                                </li>
+                                <li> [13] Double Exponential Microsoft: Available at: <a href=" https://msdn.microsoft.com/en-us/library/jj127860.aspx "> https://msdn.microsoft.com/en-us/library/jj127860.aspx </a>
+                                  </li>
+          </ul>
+
 
           <h3 class="mb-2">Contact Details</h>
           <h3 class="mb-0"> Location </h3>
