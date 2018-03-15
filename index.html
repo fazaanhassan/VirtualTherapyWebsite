@@ -368,7 +368,7 @@
 
               <h3 class="mb-4">Storyboard</h3>
               <center> 
-              <img class="mb-4" src="img/storyboard.jpg" width="80%" height="80%">
+              <img class="mb-4" src="img/storyboardfinal.jpg" width="80%" height="80%">
              </center> 
 
 
@@ -810,7 +810,7 @@
                         </table><br>
 
                         <center> <b> Use Case 3</b></center>
-
+                        <br>
                         <table class="table table-bordered table-striped">
                           <tbody>
                             <tr>
@@ -930,7 +930,7 @@
                   </p>
                   <div class="subheading mb-2">XSENS MV</div>
                   <p class="toJustify">
-                      It is a full body motion analysis system capable of giving 3D joint angles, orientation of bones and centre of mass [2]. The first disadvantage is represented by cost - 35,350 Euro is way beyond our budget. Secondly, it has a small delay in sending data by the method of wireless communication and the use of numerous cables. This would not be practical for the user. 
+                      It is a full body motion analysis system capable of giving 3D joint angles, orientation of bones and centre of mass [2]. The first disadvantage is represented by cost - 35,350 Euro is way beyond our budget. Secondly, it has a small delay in sending data by the method of wireless communication and the use of numerous cables. This would not be practical for the user.  Although, compared with Polhenus it has the advantage that it gives the center of mass information 
 
                   </p>
 
@@ -942,8 +942,7 @@
 
                   <div class="subheading mb-2">Kinect V2</div>
                   <p class="toJustify">
-                      Kinect is a depth sensor created by Microsoft that outputs the skeleton position of a user in 3D space using the infrared light and RGB camera. It is a cheap and robust solution, with good documentation and online support. <b> We decided to go with Kinect,</b> because it offers the possibility of connecting with Unity. This part was vital for us because we needed a game engine or another piece software capable of producing mixed reality applications. Also, it provides a SDK that returns the position of up to 25 joints [4]. The device has very performant audio capturing function as well. This is an important aspect for designing a voice-command based user interface for visually impaired people. However, when compared with the previous solutions it does not offer such good results for occlusion. However, we can to try to reduce this impact by approximating position and inbuilt functions to filter data from interfered joints.
-
+                      Kinect is a depth sensor created by Microsoft that outputs the skeleton position of a user in 3D space using the infrared light and RGB camera. It is a cheap and robust solution, with good documentation and online support.<b>  We decided to go with Kinect,</b> because compared with all previous solutions, it offers the possibility of connecting with Unity and because it offers a perfect balance between cost and performance. This part was vital for us because we needed a game engine or another piece software capable of producing mixed reality applications. Also, it provides a SDK that returns the position of up to 25 joints [4]. The device has very performant audio capturing function as well. This is an important aspect for designing a voice-command based user interface for visually impaired people. However, when compared with the previous solutions it does not offer such good results for occlusion. We can to try to reduce this impact by approximating position and inbuilt functions to filter data from interfered joints.
                   </p>
 
             </div>
@@ -988,7 +987,7 @@
                 </p>
                 <p class="toJustify">
                     Boo language is like python, which it makes easy to learn and use, but there were few documentations for programming Kinect with Boo.
-                    The last 2 are the most popular henceforth <b> we have chosen to program in C#. </b> Reason being is, most we are familiar with object orientated programming such as Java and have extensive knowledge of how to use classes and objects. We are grateful to have C# as an option from unity. However, If we would have written in JavaScript, there would have been issues with script compilation for premade libraries which we will discuss later below. Apart from this, there is no performance advantages of one language over the other.  
+                    The last 2 are the most popular henceforth <b> we have chosen to program in C#. </b>  Reason being is, most of us are familiar with object oriented programming  languages such as Java, which is similar with C#. If we would have written in JavaScript, there would have been issues with script compilation for premade libraries which we will discuss later below. Apart from this, there is no performance advantages of one language over the other.  
 
                 </p>
 
@@ -1016,8 +1015,7 @@
                 <div class="subheading mb-2"> MySQL Relational Database:
                   </div>
                   <p class="toJustify">
-                      MySQL is a powerful database, known for high performance and data security. It is one of the best options for complex queries. However, data must follow the same structure. The structure of our data might change, based on the movement of the user. This means the relationship between joints and their number will differ a lot [7]. Also, we have a lot of relationships between the data which will mean introducing many new tables and linking them together in the most efficient manner. Due to this, running queries on this form of data will be expensive. 
-
+                      MySQL is a powerful database, known for high performance and data security. It is one of the best options for complex queries. However, data must follow the same structure. The structure of our data might change, based on the pose chosen by the user. This means the relationship between joints and their number will differ a lot [7]. Also, we have a lot of relationships between the data which will mean introducing many new tables and linking them together in the most efficient manner. Due to this, running queries on this form of data will be expensive. 
                   </p>
                   <div class="subheading mb-2"> MongoDB
                     </div>
@@ -1054,8 +1052,7 @@
                       <div class="subheading mb-2"> OpenPose plus SMPLify
                         </div>
                       <p class="toJustify">
-                          An alternative to the OpenNI, NITE and MS-combination is OpenPose plus SMPL. It is a 2D machine learning, real time pose estimation library, where up to 18 body key points [9] are determined. This library yields great accuracy hence dealing well with occlusion. A rule-based algorithm can detect joint alignment just with 2D data, for example detect how bent the knees are without depth data, by calculating the relative position of angle joints.
-
+                          A common problem with this software is the lack of integration with Unity. This is required for the augmented part of our project causing problems as no documentation is provided on how to connect the output of library with the game engine we use. This might be considered as an alternative solution in the future of the project, because SMPLify announced that they are working on creating a Unity plugin. Therefore, the only big problem remaining is connecting the avatar to continuous data. However, this cannot be achieved as SMPLify only works on a single image [10]. It is worth mentioning that this library uses high optimisation suggesting that the computation costs for each image is high. Computing a continuous stream of images would not give real time results as the Lag in the application would be high.
                         </p>
                         <p class="toJustify">
                             However, we have not chosen this solution, because the creation of 3D audio feedback involves applying sound on objects in 3D space. Without the third axis, it is impossible to create objects that mimic our user and apply sound towards it from different directions. A solution to this problem would be the use of SMPLify. This is a machine learning software that can create 3D realistic human models from 2D data.  
@@ -1092,7 +1089,7 @@
 
                                 </div>
                               <p class="toJustify">
-                                  This plugin can be used in many game engines and has good documentation. Also, it offers the possibility to customize the effects of the sound. It has the disadvantage that it does not imitate the reflexion of sounds from walls. In this case the virtual experience we are trying to achieve will not be immersive. 
+                                  This plugin can be used in many game engines and has good documentation. Also, it offers the possibility to customize the effects of the sound. It has the disadvantage that it does not imitate the reflexion of sounds from walls very well. In this case the virtual experience we are trying to achieve will not be immersive. 
 
                                 </p>
 
@@ -1112,14 +1109,14 @@
                   <div class="resume-content mr-auto">
                     <h3 class="mb-0">algorithms</h3>
                     <p class="toJustify">
-                        Pose prediction algorithms are vital for any VR/AR application. Only using the current position of a user to compute new skeleton tracking images for each frame might result in desynchronization [12].
+                        Pose prediction algorithms are vital for any VR/AR application that include an avatar. Only using the current position of a user to compute new skeleton tracking images for each frame might result in desynchronization [12].
                         To solve this, we consider some well-known mathematical algorithms. 
 
 
                     </p>
                     <div class="subheading mb-3">Exponential Filter</div>
                     <p class="toJustify">
-                        This is a smoothing filter used for data when a sudden change appears. It applies one exponential function to smooth the input from Kinect. After a period of experimentation, we had observed that this filter perfectly follows the data trend in the abstract movement of joints in motion [13].
+                        This is a smoothing filter used for data when a sudden change appears. It applies one exponential function to smooth the input from Kinect. After a period of experimentation, we had observed that this filter does not perfectly follows the data trend in the abstract movement of joints in motion [13].
 
 
                     </p>
@@ -1137,7 +1134,7 @@
               <div class="resume-content mr-auto">
                 <h3 class="mb-1">Final Decision</h3>
                 <p class="toJustify">
-                    Our final solution consists of a Kinect V2 Sensor to get joint position from the user, and Unity creating the 3D sound effect. Our language of choice was C# for local application and node.js for the backend programming. We chose to use MS-DK Kinect from the unity library with OpenNi to control the Kinect sensor and retrieve data from it. This library also contained wrappers for transforming input into “unity spatial coordinates and functions” allowing us to map to an avatar. We also decided to use the double Exponential Filter to predict the continuous flow data and reduce the phenomenon of occlusion as much as possible.  We also decided to use the Microsoft HRTF spatializer to create the 3D sound effect. 
+                    Our final solution consists of a Kinect V2 Sensor to get joint position from the user, and Unity creating the 3D sound effect. Our language of choice was C# for local application and node.js for the backend programming. We chose to use MS-DK Kinect from the Unity Asset Store with OpenNi to control the Kinect sensor and retrieve data from it. This library also contained wrappers for transforming input into “unity spatial coordinates” allowing us to map to an avatar. We also decided to use the double Exponential Filter to predict the continuous flow data and reduce the phenomenon of occlusion as much as possible.  We also decided to use the Microsoft HRTF spatializer to create the 3D sound effect. 
 
                 </p>
               </div>
@@ -1152,20 +1149,24 @@
 
           <h3 class="mb-2">Sketches</h3>
           <p class="toJustify">
-              As part of the HCI requirement we created skecthes to visualise how our solution would work.
-              However, as the app does not imply visual interaction, we have made an overview of the components may entail. 
-              This would let us create a wireframe.  
+              As part of the HCI requirement we created sketches to visualise how our solution would work.
+              However, as the app does provide visual interaction for the user, we have made an overview of the components that it may consist of. 
+              The sketches represent how (before realising that we would require a different approach) the sensors will interact with movement.
+              Below are the 2 main sketeches.   
           </p>
-
+ 
           <center>
-              <img class="mb-3" src="img/sketch.jpg" width="80%" height="80%">
+              <img class="mb-3" src="img/sketch.jpg" width="85%" height="85%">
           </center>
 
 
           <br>
           <h3 class="mb-3">Wireframes</h3>
+          <p class="toJustify">
+              The skecthes then allowed us create a wireframe. It is important to note that this is not the way the solution is implemented, but is the visualisation of the potential way of solving and creating the solution.    
+            The Final desgin was crated after conversing with the client and project support. The use of the hololens was appropriate as it eliminated the need of wires.      </p>
           <center>
-              <img src="img/wireframefinal.jpg" width="80%" height="80%">
+              <img src="img/wireframefinal2.jpg" width="85%" height="85%">
           </center>
 
         </div>
@@ -1177,7 +1178,7 @@
 
           <h3 class="mb-3">System Architecture Diagram</h3>
           <center> 
-          <img src="img/hiarch.jpg" width="80%" height="80%">
+          <img src="img/hiarchfinal.jpg" width="85%" height="80%">
           </center>
 
           <h3 class="mb-3">Design Patterns used</h3>
