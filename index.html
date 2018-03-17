@@ -23,6 +23,10 @@
 
     <!-- Custom styles for this template -->
     <link href="css/website.css" rel="stylesheet">
+    <!-- Formulas -->
+    <script type="text/javascript" async
+    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
+    </script>
 
   </head>
 
@@ -69,7 +73,7 @@
           </li>
         </ul>
       </div>
-      <div class="copy" > copyright © 2017 - All Rights Reserved</div>
+      <div class="copy" > Copyright © 2017 - All Rights Reserved</div>
     </nav>
 
     <div class="container-fluid p-0">
@@ -923,7 +927,7 @@
               </p>
                   <div class="subheading mb-2">Polhemus Fast-Track</div>
                   <p class="toJustify">
-                      It is a promising motion track solution that uses magnetic sources to detect position of smaller devices mounted on the user’s joints. Data received from this sensor is in real time, and their experiments suggest that there is no latency. Also, occlusion does not represent a problem, because the main joints have individual sensors [1]. Occlusion is when one body parts including bones cover the joint, causing obscurity.
+                      It is a promising motion track solution that uses magnetic sources to detect position of smaller devices mounted on the user’s joints. Data received from this sensor is in real time, and their experiments suggest that there is no latency. Also, occlusion does not represent a problem, because the main joints have individual sensors [1]. Occlusion is when one body (including bones), covers another joint, causing obscurity.
                       <br><br>
                       Although this is a good solution in terms of data precision, it is very expensive and exceeds our budged for the project. Furthermore, it requires a considerable amount of time to integrate with an external software so that it can produce 3D sounds.
 
@@ -1181,11 +1185,88 @@
           <img src="img/hiarchfinal.jpg" width="85%" height="80%">
           </center>
 
+          <b> Component A</b>
+          <p class="toJustify">
+              This part of the system architecture diagram shows how the user interacts with the overall system. The headphones indicate the usage of 3D as well as granting the immersive expierence. The user here is intended to be Mark Pollock.
+
+          </p>
+          <b> Component B</b>
+          <p class="toJustify">
+              This represents the Kinect 2 Sensor which retrieves data from componenet A (the user), using its depth sensor. It captures continuous frames of movement. It must be noted that this piece of hardware must be placed at a suitable height and a distance from the user to fully capture the skeleton image. 
+
+          </p>
+          <b> Component C</b>
+          <p class="toJustify">
+              The database Icon represents the applications memory when running the scripts. It processes the data from the Kinect sensor and identifies whether the correct position has been achieved. It has also has a series of sound scripts stored which are attached to the certain joints (game objects of the avatar).
+
+          </p>
+          <b> Component D</b>
+          <p class="toJustify">
+              Component E is shows the visual interface of the unity application. It works with the Kinect Sensor (component B) to display the movement of the user as a avatar. 
+
+          </p>
+          <b> Component E</b>
+          <p class="toJustify">
+              The soundscripts were created externally and then imported into unity. These are natural-monotone sounds which increase or decrease in relation to the movement of the user. The scripts are attatched to specific joints as mentioned before and are played when a certain parts of the body move - For example the extension of the knee when trying to stand straight. The sounds are transmitted to the user via headphones in which the person then corrects his own position.
+            </p>
+          <h3 class="mb-3">Class Diagram</h3>
+            <center>
+                <img src="img/ClassDiagram.jpg" width="90%" height="90%">
+            </center>
           <h3 class="mb-3">Design Patterns used</h3>
           <h3 class="mb-3">Data Storage</h3>
           <h3 class="mb-3">Key functionalities </h3>
+          <b> Gather 3D joints from the environment and map them to an Avatar
+            </b>
+            <p class="toJustify">
+                In order to track the movement of the user’s body in real time we used the Kinect device and the Kinect SDK created by Microsoft. It must be mentioned that the tracking algorithm implemented in the sensor works with face detection, which means that the patient must face the Kinect to have his limbs position monitored. Once data is received from the device, we must process it and transform from the raw format into Unity spatial coordinates. This transformation is done using wrapper classes from the MS-SDK library we imported. 
+                <br>
+                Furthermore, we filtered the converted data using the double exponential filter method, described in the research part. The process of filtering is necessary because occlusion (misalignment of joints) can occur, meaning that Kinect gives inaccurate results when compared with real coordinates. Also, an approximation might be needed when some joint changes its position between different frames. If no approximation is done, a sudden difference in avatar’s position will be noticeable, making it desynchronized from the user’s movements.
+              <br>
+              After correctly configuring the above steps, we must map the retrieved information to game objects which are represented as bones of the avatar. All virtual bones are arranged into a hierarchy which denotes the human skeleton.
 
+            </p>
+            <b> Develop an algorithm that detects incorrect pose of the user
+              </b>
+            <p class="toJustify">
+                This requirement had been quite challenging due to the numerous ways of tackling this problem. We required a unique which applied to a simplified version of our task. There are many machine learning algorithms that can indicate and perceive the pose of the user, but are computationally expensive. This factor is an obstacle for giving real time feedback. To avoid this problem, we designed a rule-based system, that gives feedback on the pose by considering the relation between multiple joints. For example, to determine how bent the left knee is, we calculate the angle between 3 points: left hip, ankle and knee. Those joints form 2 vectors in 3d space, which makes it easy to calculate the angle using this formula:
+                <br>
+               <center> <math xmlns="http://www.w3.org/1998/Math/MathML"> 
+                <mi>𝜃
+                    </mi><mo>=</mo><msup><mi>cos</mi><mrow><mo>-</mo><mn>1</mn></mrow></msup>  <mfrac> <mi> |P|  x  |Q|</mi><mn>P x Q</mn> </mfrac></mfrac></math>  <i> where P, Q are the vectors defined by the joint points</i></center> 
+               
+                <br>
+                We know that the knee has a correct position when the value of the angle is inside an interval of error. 
+                As the definition of correct joint alignment depends on the user’s preferences, we define the conditions as variables which are calculated from the predefined choice of avatar model. In our case the clients clearly defined what a correct pose means. Below is an example of what a imbalanced and balanced skeleton looks like.
+                <center>
+                    <img src="img/keyfunc.jpg" width="60%" height="60%">
 
+                </center>
+                Different body parts can affect human position independently of the other limbs, which is the case of spine base. The solution is to simply take their rotation in space.   Despite there are distinct conditions, our system can handle all different approaches, because there are just a limited number of possibilities to consider. 
+
+              </p>
+
+                <b> Transform feedback in 3D sound modulation
+                </b>
+                <p class="toJustify">
+                    As our end user was visual impaired, he required audio guidance to know how to correctly align his joints. Simple verbal instructions were not enough, because they could not reflect how the user was progressing in terms of his current state. In other words, the verbal instructions did not suggest when knees are bent at an angle of 5 degrees and when at 60 degrees. There was not differentiation between the two. Instead, we took the approach of trying to localise the joints with 3D sound. In real life, we can distinguish sources of noise by how far they are and from which direction.  To avoid an unnecessary large learning curve, we can allocate keywords to each joint. This means we can combine the 3D sound affect principal along with this to create a tailored experience for the user.
+                    To accomplish an immersive experience, we used the Microsoft’s HRTF spatializer (Discussed in the research part). 
+                    <br>
+                    <br>
+                    As the role of avatar has been clearly defined, we need to create the 3D sound effects that represent the source of noise to be present in the scene. Taking the head of the humanoid (The avatar) as listener, position of those objects can be easily deduced from sound modulation.  The patient will have the feeling of being substituted in place of the avatar in the virtual world hence being be able to realise where his joints are localised in space.
+                    <br>
+                    <br>
+                    Despite the solution being good, we faced numerous challenges.  Firstly, the spatializer was built to imitate reality as much as possible. This meant that large distances have a noticeable effect on the sound volume. In our case, even 5 degrees of motion were extremely important and needed to be signalled to be changed. To solve this, we created mock joints. In the Unity scene, these move exponentially in relation to the user’s joints on a specific axis. For example, if the left hip is not properly aligned with the rest of the body (pushed too far on the left) than there is a difference Dx between the correct location and the current location on the x axis. Considering that value of Dx is constrained by the human body shape and is rigid (i.e it belongs to [-1, 1]) we can compute a new position for a mock hip by applying the function Exp(Dx) = 10*Dx. The newly created point will have the same values on y and z axis as the human joint while the x value will be given the previously mentioned function. The new object will then have a sound source attached to it. The schema below explains the concept:
+                   <center>
+                      <img src="img/keyfuncscheme.jpg" width="60%" height="60%">
+                   </center> 
+                   Secondly, a wrong pose can be the result of multiple joints that need correction. In this case, we cannot play at once all the various noises mapped to those joints. This will cause large amount of confusion for the user. Instead we try to choose the correct joint that has the maximal error. However, different limbs have different acceptance intervals of distinct ranges. We solved the issue by considering the proportions of joints and limbs and calculating the percentage error obtained from each proportion. 
+
+                </p>
+                <b>Main Menu with Voice activated Commands
+                  </b>
+                  <p class="toJustify">All users should be able to interact with the application in a friendly and easy-to-use manner. Since our target audience are visually impaired people we had agreed with the client to construct a menu based on speech recognition. Our solution utilises a small grammar of several instructions combined with the speech recognition features of Windows 10. Furthermore, Kinect has a very performant microphone that allowed us to create a reliable user interface. The only problem with the speech recognition system is its vulnerability to external sounds. This is the case for all speech engines.
+                    </p>
         </div>
       </section>
 
@@ -1202,8 +1283,11 @@
 
             <div class="content-item d-flex flex-column flex-md-row mb-3">
                 <div class="resume-content mr-auto">
-                  <h3 class="mb-0">Acheivement Table</h3>
+                  <h3 class="mb-0">Achievement Table</h3>
+                  <center>
+                      <img src="img/achievement.jpg" width="80%" height="90%">
 
+                  </center>
                 </div>
               </div>
 
@@ -1217,7 +1301,10 @@
                 <div class="content-item d-flex flex-column flex-md-row mb-3">
                     <div class="resume-content mr-auto">
                       <h3 class="mb-0">Contribution Table</h3>
-    
+                      <center>
+                          <img src="img/contribution.jpg" width="80%" height="90%">
+
+                      </center>
                     </div>
                   </div>
 
@@ -1311,7 +1398,7 @@
           <p>Rares Dolga 
              | Fazaan Hassan |
               Calvan Black</p> -->
-         <center> <p style = "margin-top: -10px">&copy; All rights reserved</p></center> 
+         <center> <p style = "margin-top: -10px">&Copy; All rights reserved</p></center> 
 
 
         </div>
