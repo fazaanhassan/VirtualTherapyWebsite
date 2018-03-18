@@ -1156,7 +1156,8 @@
               As part of the HCI requirement we created sketches to visualise how our solution would work.
               However, as the app does provide visual interaction for the user, we have made an overview of the components that it may consist of. 
               The sketches represent how (before realising that we would require a different approach) the sensors will interact with movement.
-              Below are the 2 main sketeches.   
+              
+              The initial high level sketch shows the position of all the sensors that will be used to track the position of the body in 3D space, thus allowing us to, in terms of those positions, know whether or not the user is standing using a correct pose or not. The Sensor representation shows how movement will be processed by the sensor, then outputted as useful data that we can then manipulate to make the user stand correctly . Below are the 2 main sketches.  
           </p>
  
           <center>
@@ -1168,7 +1169,9 @@
           <h3 class="mb-3">Wireframes</h3>
           <p class="toJustify">
               The skecthes then allowed us create a wireframe. It is important to note that this is not the way the solution is implemented, but is the visualisation of the potential way of solving and creating the solution.    
-            The Final desgin was crated after conversing with the client and project support. The use of the hololens was appropriate as it eliminated the need of wires.      </p>
+            The Final desgin was crated after conversing with the client and project support. The use of the hololens was appropriate as it eliminated the need of wires.      
+          
+            In the wireframes shown, we created an initial design that had the sensors outputting their data to an Arduino, which is an open software based on simple hardware and software, ideal for a project such as this, where the amount of data collected isn't too large. This Arduino would then process the data using algorithms that our team has created, to produce 3D sound and guide the user into a standing position. After some communication with the client, we decided to make use of the Hololens as a 3D sound device to output sounds to the user.</p>
           <center>
               <img src="img/wireframefinal2.jpg" width="85%" height="85%">
           </center>
@@ -1182,7 +1185,7 @@
 
           <h3 class="mb-3">System Architecture Diagram</h3>
           <center> 
-          <img src="img/hiarchfinal.jpg" width="85%" height="80%">
+          <img src="img/updatedArch.jpg" width="85%" height="80%">
           </center>
 
           <b> Component A</b>
@@ -1231,9 +1234,9 @@
             <p class="toJustify">
                 This requirement had been quite challenging due to the numerous ways of tackling this problem. We required a unique which applied to a simplified version of our task. There are many machine learning algorithms that can indicate and perceive the pose of the user, but are computationally expensive. This factor is an obstacle for giving real time feedback. To avoid this problem, we designed a rule-based system, that gives feedback on the pose by considering the relation between multiple joints. For example, to determine how bent the left knee is, we calculate the angle between 3 points: left hip, ankle and knee. Those joints form 2 vectors in 3d space, which makes it easy to calculate the angle using this formula:
                 <br>
-               <center> <math xmlns="http://www.w3.org/1998/Math/MathML"> 
+               <center><b> <math xmlns="http://www.w3.org/1998/Math/MathML"> 
                 <mi>𝜃
-                    </mi><mo>=</mo><msup><mi>cos</mi><mrow><mo>-</mo><mn>1</mn></mrow></msup>  <mfrac> <mi> |P|  x  |Q|</mi><mn>P x Q</mn> </mfrac></mfrac></math>  <i> where P, Q are the vectors defined by the joint points</i></center> 
+                    </mi><mo>=</mo><msup><mi>cos</mi><mrow><mo>-</mo><mn>1</mn></mrow></msup>  <mfrac> <mi> |P|  x  |Q|</mi><mn>P x Q</mn> </mfrac></mfrac> </math> </b> <i> where P, Q are the vectors defined by the joint points</i></center> 
                
                 <br>
                 We know that the knee has a correct position when the value of the angle is inside an interval of error. 
@@ -1273,6 +1276,29 @@
       <section class="content-section p-3 p-lg-5 d-flex flex-column" id="testing">
         <div class="my-auto">
           <h2 class="mb-3">Testing</h2>
+          Various testing stratigies were used to ensure that functionalities operated smoothly. We will discuss the various testing techniques below and situation in which they were performed.
+          <br clear="all" /><br />
+
+          <div class="subheading mb-3"> Stress Testing </div>
+          <p class="toJustify">
+              Stress testing was used is a non-funtional technique that is used to observe specific results when nearing a breaking point. It is a subset of performance testing thus allowing us to monitor and analayze any failures that occur. In regards to the project it used to verify if the system handles the post request from the unity application and successfully stores the data into a database. 
+            <Br>
+              <br>
+              Each test case has 4 different graphs named as: Performace, Throughput, Errors and Tests. The userload is static through out with the test duration lasting 1 minute. The performance graph indicates the average repsonse time along with the throughput which shows how many requests it is receiving within a second. The error and test graph are self explanatory. 
+
+          </p>
+          <b> Post request to server hosted on Azure</b>
+          <center> <img src="img/postReqServer.jpg" width="90%" height="90%"></center>
+          <b> Post request to server hosted locally</b>
+          <center> <img src="img/postReqLocal.jpg" width="90%" height="90%"></center>
+
+          <div class="subheading mb-3"> Load Testing </div>
+          <p class="toJustify">
+            Load testing is another type of performance test that was carried out. It was used to determine the QOS (quality of service) based on large amount of user requests. We created virtual users which similatenousely accessed the URL. It granted us critical information such a the average response time and the number of errors generated. It increased our confidence in the scalalbility and reliability of the system as it could handle large amount of requests. The results below show a total of 2923 requests being received over a span of two minutes.
+
+        </p>
+        <b> URL receiving large amount of requests</b>
+        <center> <img src="img/loadUrlLocal.jpg" width="90%" height="90%"></center>
 
         </div>
       </section>
