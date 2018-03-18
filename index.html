@@ -1279,7 +1279,7 @@
           Various testing stratigies were used to ensure that functionalities operated smoothly. We will discuss the various testing techniques below and situation in which they were performed.
           <br clear="all" /><br />
 
-          <div class="subheading mb-3"> Stress Testing </div>
+          <b> Stress Testing</b>
           <p class="toJustify">
               Stress testing was used is a non-funtional technique that is used to observe specific results when nearing a breaking point. It is a subset of performance testing thus allowing us to monitor and analayze any failures that occur. In regards to the project it used to verify if the system handles the post request from the unity application and successfully stores the data into a database. 
             <Br>
@@ -1287,20 +1287,69 @@
               Each test case has 4 different graphs named as: Performace, Throughput, Errors and Tests. The userload is static through out with the test duration lasting 1 minute. The performance graph indicates the average repsonse time along with the throughput which shows how many requests it is receiving within a second. The error and test graph are self explanatory. 
 
           </p>
-          <b> Post request to server hosted on Azure</b>
+          <div class="subheading mb-3"> Post request to server hosted on Azure </div>
+
           <center> <img src="img/postReqServer.jpg" width="90%" height="90%"></center>
-          <b> Post request to server hosted locally</b>
+          <div class="subheading mb-3"> Post request to server hosted locally</div>
+
+          
           <center> <img src="img/postReqLocal.jpg" width="90%" height="90%"></center>
 
-          <div class="subheading mb-3"> Load Testing </div>
+          <b> Load Testing </b>
           <p class="toJustify">
             Load testing is another type of performance test that was carried out. It was used to determine the QOS (quality of service) based on large amount of user requests. We created virtual users which similatenousely accessed the URL. It granted us critical information such a the average response time and the number of errors generated. It increased our confidence in the scalalbility and reliability of the system as it could handle large amount of requests. The results below show a total of 2923 requests being received over a span of two minutes.
 
         </p>
-        <b> URL receiving large amount of requests</b>
+        
+        <div class="subheading mb-3"> URL receiving large amount of requests</div>
         <center> <img src="img/loadUrlLocal.jpg" width="90%" height="90%"></center>
 
         </div>
+
+        <b>Compatibility Testing  </b>
+        <p class="toJustify">
+          Compatibility testing was carried out to ensure the application did not have any discepancy when working on a different OS.As the application is only inteded for a windows platform we decided to test it on two of the main releases. These are windows 8.1 and windows 10. The results have been displayed in the table below:
+        </p>
+        <center>
+          <div class="doTable">
+
+          
+            <table class="table-md table table-bordered" style="font-size:14px" width="50%">
+                <thead class="thead-light">
+                  <tr><th>Operating System</th><th>Version</th><th>Architecture</th> <th>Result</th></tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      Windows
+                    </td>
+                    <td>
+                       8.1                            </td>
+                    <td>
+                      64 bit
+                    </td>
+                    <td>
+                      Successful
+                    </td>
+                  </tr>
+
+                  <tr>
+                      <td>
+                        Windows
+                      </td>
+                      <td>
+                         10                           </td>
+                      <td>
+                        64 bit
+                      </td>
+                      <td>
+                        Successful
+                      </td>
+                    </tr>
+                  </tbody>
+                  </table>
+                </div>
+        </center>
       </section>
 
       <section class="content-section p-3 p-lg-5 d-flex flex-column" id="evaluation">
