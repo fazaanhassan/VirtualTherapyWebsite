@@ -1295,17 +1295,21 @@ We had used this as a stronger alternative to the Template method pattern becaus
                     </mi><mo>=</mo><msup><mi>cos</mi><mrow><mo>-</mo><mn>1</mn></mrow></msup>  <mfrac> <mi> |P|  x  |Q|</mi><mn>P x Q</mn> </mfrac></mfrac> </math> </b> <i> where P, Q are the vectors defined by the joint points</i></center> 
                
                 <br>
-                We know that the knee has a correct position when the value of the angle is inside an interval of error.<br><br>
-
-                <center><b> float angleKnee = calculateAngle3D (hip, knee, ankle);</b> </center>
-
+                We know that the knee has a correct position when the value of the angle is inside an interval of error.<br>
+                    
+  <pre> 
+  <code class="language-clike"> 
+float angleKnee = calculateAngle3D (hip, knee, ankle);
+  if (angleKnee >= 15f) {
+    percentError = calculateError (15f, angleKnee);
+  }  </code> </pre>     
+                         
                 As the definition of correct joint alignment depends on the user’s preferences, we define the conditions as variables which are calculated from the predefined choice of the avatar model. In our case the clients clearly defined what a correct pose means. Below is an example of what a imbalanced and balanced skeleton looks like.
                 <center>
                     <img src="img/keyfunc.jpg" width="60%" height="60%">
 
                 </center>
                 Different body parts can affect human position independently of the other limbs, which is the case of spine base. The solution is to simply take their rotation in space.   Despite there are distinct conditions, our system can handle all different approaches, because there are just a limited number of possibilities to consider. 
-
               </p>
 
                 <b> Transform feedback in 3D sound modulation
@@ -1376,7 +1380,11 @@ We had used this as a stronger alternative to the Template method pattern becaus
           <center> 
               <img src="img/UnitTestsUnity.jpg" width="50%" height="50%">
             </center>
-
+          <p class="toJustify">
+              Unit tests were also implemented on the nodeJS file to ensure correctness and robustness. Two main libraries were used which are Chai and Mocha. Chai is an assertion library which checks if the given input matches the pre-defined output. It follows the style of test driven development. However Mocha is javascript framework allowing one to create asynchronous tests which run serially. Below are example test cases which were run on the server file. It shows the Test, its expected result and whether it failed or not (Indicated by a green tick and Red cross).          </p>
+          <center> 
+              <img src="img/nodeTest.jpg" width="50%" height="50%">
+            </center>
             <b> Integration Testing</b>
             <p class="toJustify">
                 We used integration tests to see how Kinect module binds with the component that gives feedback based on the pose. In addition, we had to check the integration with the database. The Bottom-Up method was used to code the lower level components first and then join them together to form bigger clusters. Those combined components were tested which allowed it to move upwards in the hierarchical structure of the program, creating a fully functional app.
@@ -1397,16 +1405,16 @@ We had used this as a stronger alternative to the Template method pattern becaus
           </p>
           <center>
 
-          <div class="doTable">
+          
 
           
-          <table class="table-md table table-bordered" style="font-size:14px">
+          <table id="testing"class="table-md table table-bordered" style="font-size:14px">
               <thead class="thead-light">
-                <tr><th>Test ID</th><th>Test Scenario</th></tr>
+                <tr  align="center"><th>Test ID</th><th>Test Scenario</th></tr>
               </thead>
               <tbody>
                 <tr>
-                  <td>
+                  <td align="center">
                     Test 1
                   </td>
                   <td>
@@ -1491,7 +1499,7 @@ We had used this as a stronger alternative to the Template method pattern becaus
                                 </tr>
                 </tbody>
                 </table>
-              </div>
+             
             </center>
 
             <div class="md-4 row">
@@ -1576,7 +1584,7 @@ We had used this as a stronger alternative to the Template method pattern becaus
 
           <b> Stress Testing</b>
           <p class="toJustify">
-              Stress testing is a non-functional technique that is used to observe specific results when nearing a breaking point. It is a subset of performance testing thus allowing us to monitor and analyze any failures that occur. In regards to the project it used to verify if the system handles the post request from the unity application and successfully stores the data into a database.
+              Stress testing is a non-functional technique that is used to observe specific results when nearing a breaking point. It is a subset of performance testing thus allowing us to monitor and analyze any failures that occur. In regards to the project it used to verify if the system handles the post request from the unity application and successfully stores the data into a database. This was done using VSTS (Visual Studio Team Services)
             <Br>
               <br>
               Each test case has 4 different graphs named as: Performance, Throughput, Errors and Tests. The userload is static through out with the test duration lasting 1 minute. The performance graph indicates the average response time along with the throughput which shows how many requests it is receiving within a second. The error and test graph are self explanatory.

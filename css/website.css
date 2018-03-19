@@ -194,3 +194,11 @@ b {
 .doTable {
   width: 90%;
 }
+
+#testing td {
+  text-align:center;
+ 
+}
+#testing {
+  width: 90%;
+}
