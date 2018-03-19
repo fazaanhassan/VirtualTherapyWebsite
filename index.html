@@ -73,7 +73,7 @@
           </li>
         </ul>
       </div>
-      <div class="copy" > Copyright © 2017 - All Rights Reserved</div>
+      <div class="copy" > Copyright © 2018 - All Rights Reserved</div>
     </nav>
 
     <div class="container-fluid p-0">
@@ -162,6 +162,7 @@
     
   </div>
 </div>
+
 <br><br>
   <center> 
     <h3 class="mb-3">Features video</h3>   
@@ -1188,36 +1189,91 @@
           <img src="img/updatedArch.jpg" width="85%" height="80%">
           </center>
 
-          <b> Component A</b>
+          <b> Component A - User</b>
           <p class="toJustify">
               This part of the system architecture diagram shows how the user interacts with the overall system. The headphones indicate the usage of 3D as well as granting the immersive expierence. The user here is intended to be Mark Pollock.
 
           </p>
-          <b> Component B</b>
+          <b> Component B - Kinect Sensor </b>
           <p class="toJustify">
-              This represents the Kinect 2 Sensor which retrieves data from componenet A (the user), using its depth sensor. It captures continuous frames of movement. It must be noted that this piece of hardware must be placed at a suitable height and a distance from the user to fully capture the skeleton image. 
+              This represents the Kinect 2 Sensor which retrieves data from component A (the user), using its depth sensor. It captures continuous frames of movement. It must be noted that this piece of hardware must be placed at a suitable height and a distance from the user to fully capture the skeleton image.
 
           </p>
-          <b> Component C</b>
+          <b> Component C - Database Module</b>
           <p class="toJustify">
-              The database Icon represents the applications memory when running the scripts. It processes the data from the Kinect sensor and identifies whether the correct position has been achieved. It has also has a series of sound scripts stored which are attached to the certain joints (game objects of the avatar).
-
+              It has the role of organising the bones of the avatar in serializable data structures that can be transformed into JSON format. In addition, it has classes that handle the transmission of the JSON to the server component in an asynchronous way.
           </p>
-          <b> Component D</b>
+          <b> Component D - 3D Sound</b>
           <p class="toJustify">
-              Component E is shows the visual interface of the unity application. It works with the Kinect Sensor (component B) to display the movement of the user as a avatar. 
-
+              This component represents the output of the previous module and is what the patient hears. It can be modelled separately from the other parts, by choosing different sound scripts and by modifying their settings in the Unity Editor. 
           </p>
-          <b> Component E</b>
+          <b> Component E - Avatar and Therapy Module</b>
           <p class="toJustify">
-              The soundscripts were created externally and then imported into unity. These are natural-monotone sounds which increase or decrease in relation to the movement of the user. The scripts are attatched to specific joints as mentioned before and are played when a certain parts of the body move - For example the extension of the knee when trying to stand straight. The sounds are transmitted to the user via headphones in which the person then corrects his own position.
+              This is the core module of our application. It has the role of analysing the posture of the avatar and give feedback based on that. Furthermore, it coordinated which sound scripts to play and when allowing the correction of one joint at a time. In this way, we avoid a mixture of different noises that would not tell anything useful for the user.
+              </p>
+            <b> Component F</b>
+            <p class="toJustify">
+                This part receives the request from the main application and saves the JSON documents in the database. It acts as a secure bridge between the app and database. By running on the server it makes difficult for third-party  to access the security information about the database.              </p>
+              <b> Component G - Database</b>
+              <p class="toJustify">
+                  We used the database to store the poses a user might want to achieve during the exercises. It contains just the positions and rotations of the user in relation to the avatars bones 
+                </p>
+                <b> Component H - Kinect Module</b>
+          <p class="toJustify">
+              This section gets the data from the sensor and transforms it to the Unity format. Also, we map it or our avatar so that it can mimic the patient’s movements.
             </p>
           <h3 class="mb-3">Class Diagram</h3>
             <center>
                 <img src="img/ClassDiagram.jpg" width="90%" height="90%">
             </center>
+          
+            <h3 class="mb-3">Sequence Diagram</h3>
+            <center>
+                <img src="img/sequenceDiagram.jpg" width="90%" height="90%">
+            </center>
+
           <h3 class="mb-3">Design Patterns used</h3>
+          <b> Observer Pattern</b>
+          <p class="toJustify">
+              This pattern is used to notify the observers when an event has occurred. We create loosely coupled code by just notifying the listeners when a changed has occurred, without calling specific methods. In our implementation, we used an Observer pattern to update the avatar when a changed is seen in the patient’s position. Also, we needed it for classes that wait for user’s command in order to execute some code. Once a word is recognised, the state of the subject changes and all its observers are alerted.
+
+          </p>
+
+          <b> Command Pattern</b>
+          <p class="toJustify">
+              This pattern was used to separate the invoker of an action from the receiver. The code is separated such that the object that calls the command has no idea about the specific implementation of it. An concrete example is the voice command menu. When we require to save something to the database, the code that recognises the user’s voice will invoke the “save pose” function call on the Button Manager class. This will call the execute method of “DataSender” class that contains the code for sending information to the server. 
+          </p>
+
+          <b> Singleton</b>
+          <p class="toJustify">
+              A singleton was used when it was unnecessary to have more objects of the same type. For example, having multiple speech managers on runtime would mean having more calls on code that executes commands, while the user wanted to perform the action only once. Despite this, the design pattern has a clear scope, it is dangerous and not beneficial to overuse it - For example it can break thee SOLID principles of object-oriented design. Also, if not used adequately it can cause numerous bugs, especially in multithreaded applications. </p>
+
+          <b> Strategy Pattern</b>
+          <p class="toJustify">
+We had used this as a stronger alternative to the Template method pattern because it allows the code to be more flexible as it respects the open-closed principle. This means that future developers should just add new implementations that obey the current interfaces, instead of changing the current work.  This considerably reduces the maintenance costs. The pattern was applied to the algorithm that recognises different poses and to the part that chooses which sound is played, making it possible to easily change the approach, if advanced solutions are found in the future.  
+          </p>
+
+          <b> Adapter Pattern</b>
+          <p class="toJustify">
+            The adapter was required for connecting the Sensors raw data format into Unity spatial coordinates. We used some existing wrapper classes, which are the Adapters to call a specific function on the Kinect interface and change the returned result in a way that fulfilled our needs.
+          </p>
+          <b> Decorator Pattern</b>
+          <p class="toJustify">
+              This pattern allowed to regain more control on sounds that are played during runtime. The simple Unity behaviours “Play ()” and “Stop ()” were not enough to coordinate multiple sound sources on the same Game Object. We had to create a decorator class called “Sound Settings” that would add extra functions to the original methods of Unity’s AudioSource component. Doing this we avoided direct modifications of existing work, which would have been impossible. 
+          </p>
+          <b> Dependency Injection Pattern</b>
+          <p class="toJustify">
+              TDD (test driven development) made use of loosely coupled code. We had to use the dependency injection to avoid creation of an object in concrete classes. Instead, we passed references in the constructors, making the code more flexible, reusable and testable.
+          </p>
           <h3 class="mb-3">Data Storage</h3>
+          <p class="toJustify">
+              Although this was not one of the main requirements, we needed a someway to store different postures that user might want to achieve during the exercise. We used the Mongo database which was deployed on mLab (a cloud service for mongoDB)  because of its fast and easy configuration. To connect with it we created a server file in node.js that was deployed on Azure. For deploying we created a GitHub webhook that would put the new code on the cloud each time a pushed was made on the production branch. 
+          </p>
+
+          <center>
+              <img src="img/databaseSchema.jpg" width="70%" height="70%">
+          </center>
+
           <h3 class="mb-3">Key functionalities </h3>
           <b> Gather 3D joints from the environment and map them to an Avatar
             </b>
@@ -1239,8 +1295,11 @@
                     </mi><mo>=</mo><msup><mi>cos</mi><mrow><mo>-</mo><mn>1</mn></mrow></msup>  <mfrac> <mi> |P|  x  |Q|</mi><mn>P x Q</mn> </mfrac></mfrac> </math> </b> <i> where P, Q are the vectors defined by the joint points</i></center> 
                
                 <br>
-                We know that the knee has a correct position when the value of the angle is inside an interval of error. 
-                As the definition of correct joint alignment depends on the user’s preferences, we define the conditions as variables which are calculated from the predefined choice of avatar model. In our case the clients clearly defined what a correct pose means. Below is an example of what a imbalanced and balanced skeleton looks like.
+                We know that the knee has a correct position when the value of the angle is inside an interval of error.<br><br>
+
+                <center><b> float angleKnee = calculateAngle3D (hip, knee, ankle);</b> </center>
+
+                As the definition of correct joint alignment depends on the user’s preferences, we define the conditions as variables which are calculated from the predefined choice of the avatar model. In our case the clients clearly defined what a correct pose means. Below is an example of what a imbalanced and balanced skeleton looks like.
                 <center>
                     <img src="img/keyfunc.jpg" width="60%" height="60%">
 
@@ -1279,6 +1338,242 @@
           Various testing stratigies were used to ensure that functionalities operated smoothly. We will discuss the various testing techniques below and the situation in which they were performed.
           <br clear="all" /><br />
 
+          <b> Functional Testing</b>
+          <p class="toJustify">
+              This testing strategy is used to ensure that every function of the system works in relation to the initial requirements. The main technique used is called black-box [16] testing which does not involve any source code. The test is run on the  input requirement which is then checked against a test with a defined expected output.
+              <br>We performed functional testing using a step by step procedure [16]:
+              <ol>
+                <li> Identify the requirements. We had done this at a previous phase of our project iteration
+                  </li>
+                <li> Create appropriate input data for the test cases. 
+                    Because the combination of joint alignments is a large number, we had to identify which joints are the most common. We then stored their positions and provided an input for our test
+                    </li>
+                    <li> Determined the output depending on how functionality was defined:
+                        We had to consult with Dr Sayenko to find out what are the possible ways a patient tries to correct the pose. This is because the order of joints that are corrected affects the output of our application. In addition, we had a clear vision of how a corrected posture would like due to numerous previous meetings with our supervisors. </li>
+                      <li> Run the test:
+                          Depending if our test was automatic or manual, we executed the test cases and obtained an output
+                          </li>
+                        <li> Compare the output against the expected values:
+                            In this section we could define if the test was failing or not, giving us an idea of what was wrong with our software. 
+                            </li>
+              </ol>
+              
+          </p>
+
+          <b> How we approached Testing</b>
+          <p class="toJustify">
+              By now we had tested the functional requirements (described in the Requirement section) and the UI. We mainly used the black box technique as we were interested in how certain interfaces behave and not how they are implemented. When we discovered a test that failed and was hard to debug we had to refer to the Transparent technique (White box testing) and investigate the internal behaviour of the code. The main argument for not using it as much - is because the first method tends to focus on the implementation details, rather than of the main functionality. 
+              In the near future, we plan to test the application with our end user. His location in Ireland prevented us to do so. However, we discussed it with our clients and hope to ship the software to him or find a way to arrange a meeting.<br>
+              Different Companies have their own way of defining the next test types, so we follow the ISTQB (International Software Testing Qualifications Board) definitions.  
+              
+          </p>
+          <b> Unit Testing</b>
+
+          <p class="toJustify">
+              We followed the TDD (test driven development) approach to design our application. We first defined unit tests to check each behaviour and then created code to pass the tests. By doing so we developed code with fewer bugs and better design. The tests were automated from the beginning using the NSubstitute [17] framework and Unity Test Edit Mode. [18] 
+              To test the components of the node.js part we used Google’s ARC tool to examine how it handles post requests.
+          </p>
+          <center> 
+              <img src="img/UnitTestsUnity.jpg" width="50%" height="50%">
+            </center>
+
+            <b> Integration Testing</b>
+            <p class="toJustify">
+                We used integration tests to see how Kinect module binds with the component that gives feedback based on the pose. In addition, we had to check the integration with the database. The Bottom-Up method was used to code the lower level components first and then join them together to form bigger clusters. Those combined components were tested which allowed it to move upwards in the hierarchical structure of the program, creating a fully functional app.
+            </p>
+
+            <center>            <img src="img/IntegrationTests.jpg" width="50%" height="50%">
+            </center>
+
+          </center>
+          <b> System Testing</b>
+          <p class="toJustify">
+              We had to test our application from one end to another, so after we finished the requirements, Unit and Integration tests we performed this type of testing. In Unity and other Game Engines, it is very hard to automate testing, because you need to check interactions between objects. Unity provides a Test Runner tool, but it is appropriate for only Unit and Integration Tests. To automate the verification of the entire app we had to recreate the scenes from runtime, which would have been time consuming and inefficient. Instead, we manually checked the behaviour running through all features once.  When the found faults were fixed we repeated the cycle, gradually improving the software.
+          </p>
+
+          <b> Acceptance Testing</b>
+          <p class="toJustify">
+              Since we could not reach our end user we had to test the app on our colleagues and friends.
+          </p>
+          <center>
+
+          <div class="doTable">
+
+          
+          <table class="table-md table table-bordered" style="font-size:14px">
+              <thead class="thead-light">
+                <tr><th>Test ID</th><th>Test Scenario</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    Test 1
+                  </td>
+                  <td>
+                     Start Pose Correction                       
+                       </td>
+
+                </tr>
+
+                <tr>
+                    <td>
+                      Test 2
+                    </td>
+                    <td>
+                       Exit the application                    
+                        </td>
+
+                  </tr>
+                  <tr>
+                      <td>
+                        Test 3
+                      </td>
+                      <td>
+                         Save Pose                 
+                          </td>
+  
+                    </tr>
+                    <tr>
+                        <td>
+                          Test 4
+                        </td>
+                        <td>
+                           Calibrate Headphones                   
+                            </td>
+    
+                      </tr>
+                      <tr>
+                          <td>
+                            Test 5
+                          </td>
+                          <td>
+                             Repeat Insutructions                  
+                              </td>
+      
+                        </tr>
+                        <tr>
+                            <td>
+                              Test 6
+                            </td>
+                            <td>
+                             Navigate Menu                
+                                </td>
+        
+                          </tr>
+
+                          <tr>
+                              <td>
+                                Test 7
+                              </td>
+                              <td>
+                                Left hip wrong position             
+                                  </td>
+          
+                            </tr>
+                            <tr>
+                                <td>
+                                  Test 8
+                                </td>
+                                <td>
+                                   Right knee wrong position                   
+                                    </td>
+            
+                              </tr>
+
+                              <tr>
+                                  <td>
+                                    Test 9
+                                  </td>
+                                  <td>
+                                     Pose Correct achieved                   
+                                      </td>
+              
+                                </tr>
+                </tbody>
+                </table>
+              </div>
+            </center>
+
+            <div class="md-4 row">
+       
+                <!-- <div class="col-sm-1 text-center sr-button"></div> -->
+                <div class="col-sm-6" data-sr-id="1" style="; visibility: visible;  -webkit-transform: translateY(0) scale(1); opacity: 1;transform: translateY(0) scale(1); opacity: 1;-webkit-transition: -webkit-transform 1s cubic-bezier(0.6, 0.2, 0.1, 1) 0.2s, opacity 1s cubic-bezier(0.6, 0.2, 0.1, 1) 0.2s; transition: transform 1s cubic-bezier(0.6, 0.2, 0.1, 1) 0.2s, opacity 1s cubic-bezier(0.6, 0.2, 0.1, 1) 0.2s; ">
+                  
+                  <img src="img/test1.jpg"width="90%" height="80%">
+                  <br><br>
+                    
+                </div>
+                <div class="col-sm-6" data-sr-id="2" style="; visibility: visible;  -webkit-transform: translateY(0) scale(1); opacity: 1;transform: translateY(0) scale(1); opacity: 1;-webkit-transition: -webkit-transform 1s cubic-bezier(0.6, 0.2, 0.1, 1) 0.2s, opacity 1s cubic-bezier(0.6, 0.2, 0.1, 1) 0.2s; transition: transform 1s cubic-bezier(0.6, 0.2, 0.1, 1) 0.2s, opacity 1s cubic-bezier(0.6, 0.2, 0.1, 1) 0.2s; ">
+              
+                    <img src="img/test2.jpg" width="90%" height="80%">
+                     <br><br>
+
+                  
+                </div>
+
+                </div>
+                <div class="md-4 row">
+       
+                    <!-- <div class="col-sm-1 text-center sr-button"></div> -->
+                    <div class="col-sm-6" data-sr-id="1" style="; visibility: visible;  -webkit-transform: translateY(0) scale(1); opacity: 1;transform: translateY(0) scale(1); opacity: 1;-webkit-transition: -webkit-transform 1s cubic-bezier(0.6, 0.2, 0.1, 1) 0.2s, opacity 1s cubic-bezier(0.6, 0.2, 0.1, 1) 0.2s; transition: transform 1s cubic-bezier(0.6, 0.2, 0.1, 1) 0.2s, opacity 1s cubic-bezier(0.6, 0.2, 0.1, 1) 0.2s; ">
+                      
+                      <img src="img/test3.jpg"width="90%" height="80%">
+                      <br><br>
+                        
+                    </div>
+                    <div class="col-sm-6" data-sr-id="2" style="; visibility: visible;  -webkit-transform: translateY(0) scale(1); opacity: 1;transform: translateY(0) scale(1); opacity: 1;-webkit-transition: -webkit-transform 1s cubic-bezier(0.6, 0.2, 0.1, 1) 0.2s, opacity 1s cubic-bezier(0.6, 0.2, 0.1, 1) 0.2s; transition: transform 1s cubic-bezier(0.6, 0.2, 0.1, 1) 0.2s, opacity 1s cubic-bezier(0.6, 0.2, 0.1, 1) 0.2s; ">
+                  
+                        <img src="img/test4.jpg" width="90%" height="80%">
+                         <br><br>
+    
+                      
+                    </div>
+    
+                    </div>
+
+                    <div class="md-4 row">
+       
+                        <!-- <div class="col-sm-1 text-center sr-button"></div> -->
+                        <div class="col-sm-6" data-sr-id="1" style="; visibility: visible;  -webkit-transform: translateY(0) scale(1); opacity: 1;transform: translateY(0) scale(1); opacity: 1;-webkit-transition: -webkit-transform 1s cubic-bezier(0.6, 0.2, 0.1, 1) 0.2s, opacity 1s cubic-bezier(0.6, 0.2, 0.1, 1) 0.2s; transition: transform 1s cubic-bezier(0.6, 0.2, 0.1, 1) 0.2s, opacity 1s cubic-bezier(0.6, 0.2, 0.1, 1) 0.2s; ">
+                          
+                          <img src="img/test5.jpg"width="90%" height="80%">
+                          <br><br>
+                            
+                        </div>
+                        <div class="col-sm-6" data-sr-id="2" style="; visibility: visible;  -webkit-transform: translateY(0) scale(1); opacity: 1;transform: translateY(0) scale(1); opacity: 1;-webkit-transition: -webkit-transform 1s cubic-bezier(0.6, 0.2, 0.1, 1) 0.2s, opacity 1s cubic-bezier(0.6, 0.2, 0.1, 1) 0.2s; transition: transform 1s cubic-bezier(0.6, 0.2, 0.1, 1) 0.2s, opacity 1s cubic-bezier(0.6, 0.2, 0.1, 1) 0.2s; ">
+                      
+                            <img src="img/test6.jpg" width="90%" height="80%">
+                             <br><br>
+        
+                          
+                        </div>
+        
+                        </div>         
+                        <div class="md-4 row">
+       
+                            <!-- <div class="col-sm-1 text-center sr-button"></div> -->
+                            <div class="col-sm-6" data-sr-id="1" style="; visibility: visible;  -webkit-transform: translateY(0) scale(1); opacity: 1;transform: translateY(0) scale(1); opacity: 1;-webkit-transition: -webkit-transform 1s cubic-bezier(0.6, 0.2, 0.1, 1) 0.2s, opacity 1s cubic-bezier(0.6, 0.2, 0.1, 1) 0.2s; transition: transform 1s cubic-bezier(0.6, 0.2, 0.1, 1) 0.2s, opacity 1s cubic-bezier(0.6, 0.2, 0.1, 1) 0.2s; ">
+                              
+                              <img src="img/test7.jpg"width="90%" height="80%">
+                              <br><br>
+                                
+                            </div>
+                            <div class="col-sm-6" data-sr-id="2" style="; visibility: visible;  -webkit-transform: translateY(0) scale(1); opacity: 1;transform: translateY(0) scale(1); opacity: 1;-webkit-transition: -webkit-transform 1s cubic-bezier(0.6, 0.2, 0.1, 1) 0.2s, opacity 1s cubic-bezier(0.6, 0.2, 0.1, 1) 0.2s; transition: transform 1s cubic-bezier(0.6, 0.2, 0.1, 1) 0.2s, opacity 1s cubic-bezier(0.6, 0.2, 0.1, 1) 0.2s; ">
+                          
+                                <img src="img/test8.jpg" width="90%" height="80%">
+                                 <br><br>
+            
+                              
+                            </div>
+            
+                            </div>
+
+                            <center>
+                                <img src="img/test9.jpg" width="40%" height="40%">
+
+                            </center>
+
+
           <b> Stress Testing</b>
           <p class="toJustify">
               Stress testing is a non-functional technique that is used to observe specific results when nearing a breaking point. It is a subset of performance testing thus allowing us to monitor and analyze any failures that occur. In regards to the project it used to verify if the system handles the post request from the unity application and successfully stores the data into a database.
@@ -1293,7 +1588,9 @@
 
           
           <center> <img src="img/postReqLocal.jpg" width="90%" height="90%"></center>
-
+          <p class="toJustify">
+              On the Unity side, we test how the program detects normal movements of the joints at a constant rate. Furthermore, we examined how the speech recognition API behaves with different voices or accents
+          </p>
           <b> Load Testing </b>
           <p class="toJustify">
               Load testing is another type of performance test that was carried out. It was used to determine the QOS (quality of service) based on large amount of user requests. We created virtual users which simultaneously accessed the URL. It granted us critical information such a the average response time and the number of errors generated. It increased our confidence in the scalability and reliability of the system as it could handle large amount of requests. The results below show a total of 2923 requests being received over a span of two minutes.
@@ -1311,7 +1608,7 @@
           <div class="doTable">
 
           
-            <table class="table-md table table-bordered" style="font-size:14px" width="50%">
+            <table class="table-md table table-bordered" style="font-size:14px">
                 <thead class="thead-light">
                   <tr><th>Operating System</th><th>Version</th><th>Architecture</th> <th>Result</th></tr>
                 </thead>
@@ -1347,6 +1644,60 @@
                   </table>
                 </div>
         </center>
+
+        <b> Responsive Design Testing</b>
+        <p class="toJustify">
+            We tested our app on two main devices which have different features (e.g. screen size, memory). We had  to make sure our app responds well to these changes. The results are summarised within the table below.
+        </p>
+        <center>
+            <div class="doTable">
+  
+            
+              <table class="table-md table table-bordered" style="font-size:14px">
+                  <thead class="thead-light">
+                    <tr><th>Device Model</th><th>Resolution</th><th>RAM Memory</th> <th>Processor</th> <th> Result</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        Lenovo G-50
+                      </td>
+                      <td>
+                         1600 x 900p                           </td>
+                      <td>
+                       4
+                      </td>
+                      <td>
+                          Intel® Core™ i7-8700K Processor
+                      </td>
+                      <td> Successful</td>
+                    </tr>
+  
+                    <tr>
+                        <td>
+                          Dell 8080
+                        </td>
+                        <td>
+                           2560 x 1440p                           </td>
+                        <td>
+                          8
+                        </td>
+                        <td>
+                            Intel® Core™ i5-8600K Processor
+                        </td>
+                        <td>
+                          Successful
+                        </td>
+                      </tr>
+                    </tbody>
+                    </table>
+                  </div>
+          </center>
+          <b> Automates COntinous Integration Testing</b>
+          <p class="toJustify">
+              As previously mentioned in Unit and Integration Testing we used NSubstitute to create automated tests. In addition, we wanted to have automatic builds as well. To achieve this, we used Travis CI, a continuous integration tool. We linked GitHub project with our Travis account and created bash scripts to build and run tests every time we pushed to GitHub. If the build or at least one test failed a notification email with details is sent to the developer who pushed to the branch.  After fixing the failed test we reran all the tests to ensure that no new bug were introduced.
+          </p>
+          <img src="img/automated.jpg" width="80%" height="80%">
       </section>
 
       <section class="content-section p-3 p-lg-5 d-flex flex-column" id="evaluation">
@@ -1458,6 +1809,13 @@
                                 </li>
                                 <li> [13] Double Exponential Microsoft: Available at: <a href=" https://msdn.microsoft.com/en-us/library/jj127860.aspx "> https://msdn.microsoft.com/en-us/library/jj127860.aspx </a>
                                   </li>
+                                  <li> [14] Command Pattern: Available at: <a href="https://sourcemaking.com/design_patterns/command"> https://sourcemaking.com/design_patterns/command</a></li>
+                                  <li>
+                                    [15] Gamma, Erich, et al. Design Patterns: Elements of Reusable Object-Oriented Software. Pearson Education, 2015.
+                                  </li>
+                                <li> [16] Functional Testing: Available at: <a href="https://www.guru99.com/functional-testing.html"> https://www.guru99.com/functional-testing.html</a> </li>
+                                <li> [17] NSubstitute: Available at: <a href="http://nsubstitute.github.io/help.html"> http://nsubstitute.github.io/help.html</a> </li>
+                                <li> [18] Unity Tests Documentation: Available at: <a href="https://docs.unity3d.com/Manual/testing-editortestsrunner.html"> https://docs.unity3d.com/Manual/testing-editortestsrunner.html</a> </li>
           </ul>
 
 
@@ -1470,7 +1828,7 @@
           <p>Rares Dolga 
              | Fazaan Hassan |
               Calvan Black</p> -->
-         <center> <p style = "margin-top: -10px">&Copy; All rights reserved</p></center> 
+         <center> <p style = "margin-top: -10px">&copy; All rights reserved</p></center> 
 
 
         </div>
