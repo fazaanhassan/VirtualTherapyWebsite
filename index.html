@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Team 25 - Virtual Therapy</title>
+    <title>Team 25 - VirtualTherapy</title>
 
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -43,7 +43,7 @@
         <ul class="navbar-nav toLeft">
           <div class="mb-5">
           </div>
-          <center> <h5> <b>  Virtual Therapy </b><br> </h5> <h6> <b> by Team 25</b></h6></center>
+          <center> <h5> <b>  VirtualTherapy </b><br> </h5> <h6> <b> by Team 25</b></h6></center>
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="#about">Home</a>
           </li>
@@ -167,12 +167,12 @@
   <center> 
     <h3 class="mb-3">Features video</h3>   
   </center>
-        <center> 
-          <iframe class="mb-5" width="700" height="450"
-            src="https://www.youtube.com/embed/tgbNymZ7vqY">
-          </iframe>
-        </center> 
 
+              <center>
+
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/gs0b5Cnryec" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>            </center>
+        </center> 
+          <br>
         <center>  
         <h3 class="mb-0">Meet the Team</h3>   
          
@@ -206,7 +206,7 @@
 
               <h3 class="mb-1">Project Background </h3>
               <p class="toJustify">
-                  The assigned name of the project is “Cognitive rewiring through mixed reality”. The affiliated organisation is Microsoft whom require an application for their user Mark-Pollock. The project is designed to tackle the issue of correcting a user’s posture given the fact that they are visually impaired and paralyzed waist down. Virtual Therapy (Name of the application) is created in such a way, that it can be used alongside the current mechanism of a user correcting his/her position with the help of a psychiatrist. The application is trying to give the user more freedom by relying only on pleasant sound iterations to indicate if they are correctly aligned. The user-interface is developed in mind of further improvements by software engineers in order to provide a friendly interface when using the application, but also for the trainer/psychiatrist to start and stop the program if required so. 
+                  The assigned name of the project is “Cognitive rewiring through mixed reality”. The affiliated organisation is Microsoft whom require an application for their user Mark-Pollock. The project is designed to tackle the issue of correcting a user’s posture given the fact that they are visually impaired and paralyzed waist down. VirtualTherapy (Name of the application) is created in such a way, that it can be used alongside the current mechanism of a user correcting his/her position with the help of a psychiatrist. The application is trying to give the user more freedom by relying only on pleasant sound iterations to indicate if they are correctly aligned. The user-interface is developed in mind of further improvements by software engineers in order to provide a friendly interface when using the application, but also for the trainer/psychiatrist to start and stop the program if required so. 
             
 
               </p>
@@ -957,7 +957,7 @@
             <div class="resume-content mr-auto">
               <h3 class="mb-0">Potential Frameworks</h3>
               <p class="toJustify">
-                  The Virtual Therapy project is a mixed reality application, so we required an editor that would facilitate the construction of such a software. This can done by different <b>gaming engines</b>. They are described below:
+                  The VirtualTherapy project is a mixed reality application, so we required an editor that would facilitate the construction of such a software. This can done by different <b>gaming engines</b>. They are described below:
 
               </p>
               <div class="subheading mb-2">Unreal</div>
@@ -1224,7 +1224,7 @@
             </p>
           <h3 class="mb-3">Class Diagram</h3>
             <center>
-                <img src="img/ClassDiagram.jpg" width="90%" height="90%">
+                <img src="img/ClassDiagramNormal.jpg" width="90%" height="90%">
             </center>
           
             <h3 class="mb-3">Sequence Diagram</h3>
@@ -1701,7 +1701,7 @@ float angleKnee = calculateAngle3D (hip, knee, ankle);
                     </table>
                   </div>
           </center>
-          <b> Automates COntinous Integration Testing</b>
+          <b> Automated and Cntinous Integration Testing</b>
           <p class="toJustify">
               As previously mentioned in Unit and Integration Testing we used NSubstitute to create automated tests. In addition, we wanted to have automatic builds as well. To achieve this, we used Travis CI, a continuous integration tool. We linked GitHub project with our Travis account and created bash scripts to build and run tests every time we pushed to GitHub. If the build or at least one test failed a notification email with details is sent to the developer who pushed to the branch.  After fixing the failed test we reran all the tests to ensure that no new bug were introduced.
           </p>
@@ -1711,6 +1711,7 @@ float angleKnee = calculateAngle3D (hip, knee, ankle);
       <section class="content-section p-3 p-lg-5 d-flex flex-column" id="evaluation">
           <div class="my-auto">
             <h2 class="mb-3">Evaluation</h2>
+            
 
             <div class="content-item d-flex flex-column flex-md-row mb-3">
                 <div class="resume-content mr-auto">
@@ -1741,15 +1742,51 @@ float angleKnee = calculateAngle3D (hip, knee, ankle);
 
                   <div class="content-item d-flex flex-column flex-md-row mb-3">
                       <div class="resume-content mr-auto">
-                        <h3 class="mb-0">Evaluation</h3>
-      
+                        <h3 class="mb-0">Critical Evaluation</h3>
+                        <p class="toJustfy">
+                            The user interface and their experience is one of the most important things to bear in mind when developing an application, because it is the part they interact with and see. The user interface and overall feel of the application can determine whether the application is ultimately successful or not. During the course of the project there have been several changes to the user interface and experience, these have been both stylistic and structural changes. Our iterative design directed us to  choosing a vocal user interface specially designed for visually impaired users.
+                        </p>
+                        <b> Functionality</b>
+                        <p class="toJustify">
+                            The user interface is what the user sees and interacts with. Functionality is what the user is able to do with the application. This makes it an equal, if not more important, aspect to consider when developing an application. The main purpose of our application is to correct the posture of paralysed patients during therapy sessions. This was achieved by breaking down the overall functionality into several subsections. First we had to integrate the Kinect sensor with Unity and process the input data. The pose analysis algorithms we developed were also an important aspect of the application’s functionality. Lastly, generating 3D sounds using the output of the  previously mentioned algorithms was a core functionality, that was successfully integrated for a more immersive experience.  Since we approached an open research problem, our solution is specific for our scenario and subject area, thus, it is not perfect. Voice Command features are another key aspect of our functionality that we added as an extra requirement. 
+                        </p>
+
+                        <b> Stability</b>
+                        <p class="toJustify">
+                            The application we developed is stable and does not crash. Testing has ensured an error free software. Depending on the hardware components of the computer used, the application can run slower than normal, but it is still stable. Regarding reliability, our application gives thoroughly reliable feedback for pose correction. The only problem, as explained in previous sections, is occlusion. If this phenomenon appears, then the output from our algorithms is not completely correct, due to the input data from sensors not being accurate.
+
+                        </p>
+                        
+                        <b> Efficiency</b>
+                        <p class="toJustify">
+                            VirtualTherapy was designed to be as efficient as possible, especially since we have to give feedback in real time. We could not afford to use time expensive methods for pose recognition and 3D sound generation. Furthermore, we optimized the algorithms we used as much as possible, both from a time and memory perspective. 
+                        </p>
+
+                        <b> Compatibility</b>
+                        <p class="toJustify">
+                            Our software was designed using Microsoft technologies and is therefore targeted for their operating system, meaning that Windows 10 is the only OS on which the application will run. In terms of hardware, the computer running the application should have at least 4GB of RAM and a USB3 port. 
+                        </p>
+
+                        <b> Maintainability</b>
+                        <p class="toJustify">
+                            We tried to develop the code following the SOLID design principles. This implies that our code is flexible, reusable and maintainable. By separating the code in multiple components we created a structure that is easy to understand. Furthermore, it is easy to  change some components like the Kinect section, as technology is rapidly improving. 
+
+                        </p>
+
+                        <b> Project Management</b>
+                        <p class="toJustify">
+                            We organised our project based on 3 major deadlines. The first was on the 12th December 2017, by which we had to complete the research phase of our project and propose a credible solution. The second point in our timeline was the 3rd of March 2018, on this date we had to present a prototype of our work. Finally, the last major due date is the 22nd of March 2018, whereby a complete version of the application needs to be submitted. Along with these checkpoints, we created internal deadlines to assure we would deliver the product on time. We created a Gantt chart that shows how we organised our time. 
+                        </p>
+
                       </div>
                     </div>
     
                     <div class="content-item d-flex flex-column flex-md-row mb">
                         <div class="resume-content mr-auto">
                           <h3 class="mb-0">Future Work</h3>
-        
+                          <p class="toJustify">
+                              The  project could be improved in various ways if an extra 3 months were given. The quality of the sounds used would be adjusted in terms of replicating natural audio. With regards to the avatar, we would remove the anime-type avatar and replace it with a realistic representation of a human avatar. Although this would not benefit the user, it would provide the application with a more professional feel. One of the main problems we had faced was the obscurity caused by occlusion. With extra time given we could improve the way we deal with occlusion. One possible solution would be to implement deep learning. However, the deep learning algorithm should be developed from scratch and use RGB depth images as input. Another way we could take advantage of those 3 months would be if a more cost-effective sensor were to become available. In such a case, a more efficient and accurate sensor would give us more accurate data from the user, creating a more effective application. Although not required by the client, a possible addition to the application would be to add a wider variety of physiotherapeutic exercise, such as taking a step forward or backwards. This would add more functionality to the application, opening it up to a larger user base. 
+                          </p>
                         </div>
                       </div>
 
@@ -1762,10 +1799,98 @@ float angleKnee = calculateAngle3D (hip, knee, ankle);
 
               <div class="content-item d-flex flex-column flex-md-row mb-3">
                   <div class="resume-content mr-auto">
+                    <h3 class="mb-0">User Manual</h3>
+                    <p class="toJustify">
+                      The screenshots and description below them show how the application is run. As the user is visually impaired, these steps demonstrated will be for the physiatrist/trainer to undertake.
+                    </p>
+
+                    <b> Getting the Application running</b>
+                    <ol>
+                      <li> Run the executable file called with the unity logo. This will prompt you to the next screen.
+                        </li>
+                      <li> Select from the given screen sizes and then click play. The unity application will start running. A blue screen with menu user interface will appear</li>
+                      </ol>
+                      <b> Step 1: Calibrating the headphones</b>
+                      <ol>
+                        <li> When the application is directed towards to the main scene, it will vocally walk through the options of what the user must say.</li>
+                        <li> The visually impaired user will say "Calibrate"</li>
+                        <li> Headphones can now be adjusted based on which side the sound is emitting from.</li>
+
+                      </ol>
+                      <b> Step 1.1: Repeat Instructions</b>
+                      <ol>
+                        <li> If the user has forgotten which command he intends to run, or did not understand the audio, he can simply say "Run"</li>
+                        <li> The instructions will then be repeated.</li>
+                      </ol>
+
+                      <b> Step 2: Start Pose Correction</b>
+                      
+                      <ol>
+                        <li> The user says "Start"</li>
+                        <li> A replication of the user is modelled into an avatar with another screen in the bottom left showing the user himself.</li>
+                        <li> Sounds are initially played indicating to the user which sound is related to which joint. </li>
+                        <li> The algorithm has now begun. Sounds increase in intensity if the user is distant from the correct posture. Conversely, they decrease if the current state of the user is improving.</li>
+                      </ol>
+                      <b> Step 3: Exit Application</b>
+                      <ol>
+                        <li> From the Start Pose screen, the user must vocally say "Main Menu" to return to the initial screen</li>
+                        <li> The user will now say "Exit"</li>
+                      </ol>
+
+                    </ol>
+
+                    <!--
+                    <div class="md-4 row">
+       
+                        <div class="col-sm-4 text-center sr-button" data-sr-id="1" style="; visibility: visible;  -webkit-transform: translateY(0) scale(1); opacity: 1;transform: translateY(0) scale(1); opacity: 1;-webkit-transition: -webkit-transform 1s cubic-bezier(0.6, 0.2, 0.1, 1) 0.2s, opacity 1s cubic-bezier(0.6, 0.2, 0.1, 1) 0.2s; transition: transform 1s cubic-bezier(0.6, 0.2, 0.1, 1) 0.2s, opacity 1s cubic-bezier(0.6, 0.2, 0.1, 1) 0.2s; ">
+                          <h6>Step 1<br>
+                          </h6><h3>
+                            <img src="img/startPhase.jpg" width="70%" height="70%">
+                          </h3>
+                          <br>
+                            <medium>
+                              Run the executable file called with the unity logo. This will prompt you to the next screen.
+                            </medium><br>
+                            <small></small>
+                            
+                        </div>
+                        <div class="col-sm-4 text-center sr-button" data-sr-id="2" style="; visibility: visible;  -webkit-transform: translateY(0) scale(1); opacity: 1;transform: translateY(0) scale(1); opacity: 1;-webkit-transition: -webkit-transform 1s cubic-bezier(0.6, 0.2, 0.1, 1) 0.2s, opacity 1s cubic-bezier(0.6, 0.2, 0.1, 1) 0.2s; transition: transform 1s cubic-bezier(0.6, 0.2, 0.1, 1) 0.2s, opacity 1s cubic-bezier(0.6, 0.2, 0.1, 1) 0.2s; ">
+                          <h6>Step 2<br>
+                            </h6><h3>                            
+                              <img src="img/playScreen.jpg" width="70%" height="70%">
+                            </h3>
+                             <br>
+                            <medium>Helps the user to correct his/her position through pleasant sound iterations.
+                              For Example trying to stand straight. 
+                            </medium><br>
+                            <small></small>
+                          
+                        </div>
+                        <div class="col-sm-4 text-center sr-button" data-sr-id="3" style="; visibility: visible;  -webkit-transform: translateY(0) scale(1); opacity: 1;transform: translateY(0) scale(1); opacity: 1;-webkit-transition: -webkit-transform 1s cubic-bezier(0.6, 0.2, 0.1, 1) 0.2s, opacity 1s cubic-bezier(0.6, 0.2, 0.1, 1) 0.2s; transition: transform 1s cubic-bezier(0.6, 0.2, 0.1, 1) 0.2s, opacity 1s cubic-bezier(0.6, 0.2, 0.1, 1) 0.2s; ">
+                          <h6> Step 3<br>
+                            </h6><h3>                              
+                              <img src="img/startNoSpeech.jpg" width="70%" height="70%">
+                            </h3>
+                            <br>
+                            <medium> Store the current posture into a database.</medium><br>
+                            <small></small>
+                          
+                        </div>
+                        
+                        </div> -->
+                        
+                  </div>
+                </div>
+
+              <div class="content-item d-flex flex-column flex-md-row mb-3">
+                  <div class="resume-content mr-auto">
                     <h3 class="mb-0">Deployment Manual</h3>
+
   
                   </div>
                 </div>
+
+
 
                 <div class="content-item d-flex flex-column flex-md-row mb-3">
                     <div class="resume-content mr-auto">
