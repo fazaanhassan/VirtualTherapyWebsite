@@ -68,6 +68,10 @@
             <li class="nav-item">
                 <a class="nav-link js-scroll-trigger" href="#management">Management</a>
               </li>
+              <li class="nav-item">
+                  <a class="nav-link js-scroll-trigger" href="#Legal">Legal Implication</a>
+                </li>
+
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="#References">References</a>
           </li>
@@ -179,9 +183,46 @@
         </center> 
           <br>
         <center>  
+
         <h3 class="mb-0">Meet the Team</h3>   
          
-           <div class="profiles">
+        <div class="row">
+          <div class="col-sm-4">
+              <img class="mb-0 rounded-circle" src="img/rares.jpg" width="150px">
+              <ul class="list-unstyled">
+                  <li>Rares Dolga</li>
+                  <li> Team Leader</li>
+                  <li> Front End Developer</li>
+                  <li> Back End Developer</li>
+                  <li>< rares.dolga.16@ucl.ac.uk ></li>
+               </ul>
+          </div>
+          
+          <div class="col-sm-4">
+              <img class="mb-0 rounded-circle" src="img/fazaan.jpg" width="150px">
+              <ul class="list-unstyled">
+                  <li>Fazaan Hassan</li>
+                  <li>Tester</li>
+                  <li> Back End Developer</li>
+                  <li> Head of Research</li>
+                  <li> < fazaan.hassan.16@ucl.ac.uk ></li>
+               </ul>
+            </div>
+          
+            <div class="col-sm-4">
+                <img class="mb-0 rounded-circle" src="img/cavan.jpg" width="150px">
+                <ul class="list-unstyled">
+                    <li>Cavan Black</li>
+                    <li>Audio and Visual Lead</li>
+                    <li>Researcher</li>
+                    <li>Documentation</li>
+                    <li>< cavan.black.16@ucl.ac.uk ></li>
+                 </ul>
+              </div>
+
+        </div>
+
+           <!-- <div class="profiles">
                <img class="mb-0 rounded-circle" src="img/rares.jpg" width="150px">
                <img class="mb-0 rounded-circle" src="img/fazaan.jpg" width="150px">
                <img class="mb-0 rounded-circle" src="img/cavan.jpg" width="150px">
@@ -199,7 +240,8 @@
                <li class="list-inline-item"><br> <b> Cavan Black</b> <br> Audio and Visual Lead <br> Researcher <br>  Documentation and Report Editor <br><b>< cavan.black.16@ucl.ac.uk ></b>
                </li>
              </ul>
-           </div>
+           </div> -->
+
          </center>
 
         </div>
@@ -1178,15 +1220,55 @@
 
 
           <br>
-          <h3 class="mb-3">Wireframes</h3>
+          <h3 class="mb-3">Component Sketch</h3>
           <p class="toJustify">
-              The skecthes then allowed us create a wireframe. It is important to note that this is not the way the solution is implemented, but is the visualisation of the potential way of solving and creating the solution.    
+              The sketches then allowed us create addtional architectural designs. It is important to note that this is not the way the solution is implemented, but is the visualisation of the potential way of solving and creating the solution.    
             The Final desgin was crated after conversing with the client and project support. The use of the hololens was appropriate as it eliminated the need of wires.      
           
-            In the wireframes shown, we created an initial design that had the sensors outputting their data to an Arduino, which is an open software based on simple hardware and software, ideal for a project such as this, where the amount of data collected isn't too large. This Arduino would then process the data using algorithms that our team has created, to produce 3D sound and guide the user into a standing position. After some communication with the client, we decided to make use of the Hololens as a 3D sound device to output sounds to the user.</p>
+            In the designs shown, we created an initial sketch that had the sensors outputting their data to an Arduino, which is an open software based on simple hardware and software, ideal for a project such as this, where the amount of data collected isn't too large. This Arduino would then process the data using algorithms that our team has created, to produce 3D sound and guide the user into a standing position. After some communication with the client, we decided to make use of the Hololens as a 3D sound device to output sounds to the user.</p>
           <center>
               <img src="img/wireframefinal2.jpg" width="85%" height="85%">
           </center>
+
+          <h3 class="mb-3">Wireframes</h3>
+          <p class="toJustify">
+            The wireframes below show the last form of iteration we took. The sketches were a preliminary
+            design, displaying our initial idea of approaching the project. We must stress the fact,
+            that the application is not based on visual input as it is a 3D sound project. Hence the lack 
+            of suitable wireframes.
+          </p>
+          <center>
+            <div class="row">
+              <div class="col-sm-6">
+                  <img src="img/MainMenu.jpg" width="85%" height="85%">
+
+              </div>
+              <div class="col-sm-6">
+                  <img src="img/MainPage.jpg" width="85%" height="85%">
+
+              </div>
+            </div>
+              
+
+          </center>
+          <h3 class="mb-3">Prototype Screenshots </h3>
+          <p class-"toJustify">
+            Below are the prototype images of our application.
+          </p>
+          <div class="row">
+            <div class="col-sm-4">
+                <img src="img/exitMenue.jpg" width="85%" height="85%">
+
+            </div>
+            <div class="col-sm-4">
+                <img src="img/avatarScene.jpg" width="85%" height="85%">
+
+              </div>
+              <div class="col-sm-4">
+                  <img src="img/PlayScreenScene.jpg" width="85%" height="85%">
+
+                </div>
+          </div>
 
         </div>
       </section>
@@ -1635,27 +1717,30 @@ float angleKnee = calculateAngle3D (hip, knee, ankle);
                             </center>
                             <br>
                             <h3 class="mb-3">Client and User Feedback</h3>
-                            
-                            <b> From The Client:</b>
+                            <div id="feedback">
+
+                            <p class="toJustify"> <b> From the Client (Jarnail)</b></p>
                             <p class="toJustify">
                               "Rares, please pass the following onto the rest of the team From my perspective, I think you and the team, but you in particular, as the leader of your group, have done an outstanding job. You were set a very difficult and challenging project, something new, something exploratory... and not only did you engage really well and sensitively with your key client contacts Mark and Dimitry, but the way in which you absorbed the information they provided and rose to the challenge to create a working prototype has been fantastic. You handled the technical challenges extremely well... reached out with questions and concerns when you had them, made sure there was a regular stream of project updates and statuses, which from a communication point of view is really important... because it can be all too easy to bury your head in the technology and lose sight of the impact on a person’s life you are trying to have. To the great credit of you and your team, your passion and commitment has been unrelenting over the course of this project. You set yourselves a high and challenging goal, and have made tremendous progress which I think has exceeded what we thought was possible given the challenges you were dealing with "
 
                             </p>
 
-                            <b> From The User</b>
+                            <p class="toJustify"> <b> From the User (Mark)</b></p>
                             <p class="toJustify">
                               “The complexities of multiple sensory impairment are difficult to understand for most people. Dolga and his team managed to appreciate those complexities and apply logical thinking to the problem. Both the concept and practical solution developed are way beyond what I expected. I believe that this solution will be a significant step along the path towards a cure for paralysis.”  
 Mark Pollock – Explorer & Collaboration Catalyst at the Mark Pollock Trust"
                             </p>
+                            <p class="toJustify"> <b> From Michael</b></p>
 
-                            <b> From Michael</b>
+                            
                             <p class="toJustfy">
                              "  Passion, seeking to understand, research, attention for detail, keeping us informed and engaged every step of the way, going beyond in helping us to next steps beyond the current project.
 I loved the outcome and I want to make sure that we can give it due attention for next steps.
 I can see it helping with the original use case, but also in other applications, such as vestibular rehabilitation, proprioception, convalescence,…"
                             </p>
+                          </div>
 
-
+<br>
         <b>Compatibility Testing  </b>
         <p class="toJustify">
             Compatibility testing was carried out to ensure the application did not have any discrepancy when working on a different OS.As the application is only intended for a windows platform we decided to test it on two of the main releases. These are windows 8.1 and windows 10. The results are shown below.        </p>
@@ -1853,7 +1938,7 @@ I can see it helping with the original use case, but also in other applications,
 
         <section class="content-section p-3 p-lg-5 d-flex flex-column" id="management">
             <div class="my-auto">
-              <h2 class="mb-5">Management</h2>
+              <h2 class="mb-3">Management</h2>
 
               <div class="content-item d-flex flex-column flex-md-row mb-3">
                   <div class="resume-content mr-auto">
@@ -1987,6 +2072,21 @@ I can see it helping with the original use case, but also in other applications,
 
             </div>
           </section>
+
+       <section class="content-section p-3 p-lg-5 d-flex flex-column" id="Legal">
+          <div class="my-auto">
+              <h2 class="mb-3">Legal Implications</h2>
+
+              <a href="legalEssay.pdf" target="_blank">Click here if the PDF does not display on screen</a>
+              <br><br>
+            <center>
+              <embed src="legalEssay.pdf" type="application/pdf"   height="700px" width="700px">
+
+            </center>
+          </div>
+
+
+       </section>
 
       <section class="content-section p-3 p-lg-5 d-flex flex-column" id="References">
         <div class="my-auto">

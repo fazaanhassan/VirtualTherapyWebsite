@@ -202,3 +202,12 @@ b {
 #testingTable {
   width: 90%;
 }
+
+#feedback {
+  border-style: dashed;
+  border-color: rgb(43, 102, 174);
+}
+
+#feedback p {
+  margin:10px;
+}
