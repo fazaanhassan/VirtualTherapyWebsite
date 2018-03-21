@@ -81,6 +81,7 @@
       <section class="content-section p-3 p-lg-5 d-flex d-column" id="about">
         <div class="my-auto">
             <img align="right" src="img/microsoftlogo.jpg" width="150" height="55">
+            <img align="right" src="img/UCL-logo.jpg" width="70" height="70" >
 
           <h2 class="mb-0">Virtual
 
@@ -90,17 +91,21 @@
           </h2>
 
           <div class="subheading mb-3"> "Cognitive Rewiring through mixed-reality" 
-                      <!-- <img align="right" src="img/UCL-logo.jpg" width="70" height="70" > -->
+            <br clear="all" /><br />
 
           </a>
           </div>
 
           <p class="toJustify">
-              “Virtual Therapy is a 3D audio feedback system created in Unity to help those with visual impairment and 
-              lower-back disability. It focuses on improving and correcting the posture of user's through various iterations of pleasant sounds. 
-              We hope this can be used globally, and positively affect those who require it”
+              “Virtual Therapy is a 3D audio feedback system created in Unity to help those with visual impairment and lower-back disability. It focuses on improving and correcting the posture of user's through various iterations of pleasant sounds.
+              <br><br>
+              The problem is that there is a need for automatic computer feedback in therapy sessions that would make the user understand the alignment of his joints. Our approach uses sensors to gather users joint position and rule-based algorithms for pose detection. 3D sound was used as a form of intuitive feedback on how to correct the pose.
+              <br><br>
+              We successfully developed a system that tackles this open research problem using innovative technologies. We hope this can be used globally, and positively affect those who require it. 
+              ”
           </p>          
-          
+          <br clear="all" /><br />
+
 
 
 
@@ -138,7 +143,7 @@
   <h6>Pose Correction <br><br>
     </h6><h3><i class="fa fa-male fa-3x text-primary" aria-hidden="true"></i></h3>
      <br><br>
-    <medium>Helps the user to correct his/her position through pleasant sound iterations.
+    <medium>Helps the user to correct his/her posture through pleasant sound iterations.
       For Example trying to stand straight. 
     </medium><br>
     <small></small>
@@ -206,7 +211,7 @@
 
               <h3 class="mb-1">Project Background </h3>
               <p class="toJustify">
-                  The assigned name of the project is “Cognitive rewiring through mixed reality”. The affiliated organisation is Microsoft whom require an application for their user Mark-Pollock. The project is designed to tackle the issue of correcting a user’s posture given the fact that they are visually impaired and paralyzed waist down. VirtualTherapy (Name of the application) is created in such a way, that it can be used alongside the current mechanism of a user correcting his/her position with the help of a psychiatrist. The application is trying to give the user more freedom by relying only on pleasant sound iterations to indicate if they are correctly aligned. The user-interface is developed in mind of further improvements by software engineers in order to provide a friendly interface when using the application, but also for the trainer/psychiatrist to start and stop the program if required so. 
+                  The assigned name of the project is “Cognitive rewiring through mixed reality”. The affiliated organisation is Microsoft whom require an application for their user Mark-Pollock. VirtualTherapy (Name of the application) is created in such a way, that it can be used alongside the current mechanism of a user correcting his/her position with the help of a psychiatrist. The user-interface is developed in mind of further improvements by software engineers in order to provide a friendly interface when using the application, but also for the trainer/psychiatrist to start and stop the program if required so. 
             
 
               </p>
@@ -216,6 +221,12 @@
                   The group people part of this project and whom the solution is intended for are as follows: Jarnail Chudge – Client and Project Support, Mark Pollock – Client and Intended user, and finally Dimitry Sayenko – Subject matter expert. Through email communication and skype meetings, we were guided to the right path in terms of the correct technologies and intended hardware to be used for this project. 
 
               </p>
+
+              <h3 class="mb-1">Project Goals</h3>
+              <p class="toJustify">
+                The project is designed to tackle the issue of correcting a user’s posture given the fact that they are visually impaired and paralyzed waist down.
+                The application is trying to give the user more freedom by relying only on pleasant sound iterations to indicate if they are correctly aligned.
+            </p>
 
 
               <h3 class="mb-1">Requirement Gathering</h3>
@@ -1322,7 +1333,17 @@ float angleKnee = calculateAngle3D (hip, knee, ankle);
                     As the role of avatar has been clearly defined, we need to create the 3D sound effects that represent the source of noise to be present in the scene. Taking the head of the humanoid (The avatar) as listener, position of those objects can be easily deduced from sound modulation.  The patient will have the feeling of being substituted in place of the avatar in the virtual world hence being be able to realise where his joints are localised in space.
                     <br>
                     <br>
-                    Despite the solution being good, we faced numerous challenges.  Firstly, the spatializer was built to imitate reality as much as possible. This meant that large distances have a noticeable effect on the sound volume. In our case, even 5 degrees of motion were extremely important and needed to be signalled to be changed. To solve this, we created mock joints. In the Unity scene, these move exponentially in relation to the user’s joints on a specific axis. For example, if the left hip is not properly aligned with the rest of the body (pushed too far on the left) than there is a difference <b> <i> Dx</i></b> between the correct location and the current location on the x axis. Considering that value of <b> <i> Dx</i></b> is constrained by the human body shape and is rigid (i.e it belongs to [-1, 1]) we can compute a new position for a mock hip by applying the function <b><i> Exp(Dx) = 10*Dx</i></b>. The newly created point will have the same values on y and z axis as the human joint while the x value will be given the previously mentioned function. The new object will then have a sound source attached to it. The schema below explains the concept:
+                    Despite the solution being good, we faced numerous challenges.  Firstly, the spatializer was built to imitate reality as much as possible. This meant that large distances have a noticeable effect on the sound volume. In our case, even 5 degrees of motion were extremely important and needed to be signalled to be changed. To solve this, we created mock joints. In the Unity scene, these move exponentially in relation to the user’s joints on a specific axis. For example, if the left hip is not properly aligned with the rest of the body (pushed too far on the left) than there is a difference <b> <i> Dx</i></b> between the correct location and the current location on the x axis. Considering that value of <b> <i> Dx</i></b> is constrained by the human body shape and is rigid (i.e it belongs to [-1, 1]) we can compute a new position for a mock hip by applying the function
+               <b> <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    
+                      <mi>Exp(Dx)
+                        </mi><mo>=</mo>  
+                       <msup><mi>e</mi><mi><mi> 10x</mi><mi> D</mi><mi>x</mi></mi></msup>
+                    </math></b>
+                    
+                    
+                    . 
+                    The newly created point will have the same values on y and z axis as the human joint while the x value will be given the previously mentioned function. The new object will then have a sound source attached to it. The schema below explains the concept:
                    <center>
                       <img src="img/keyfuncscheme.jpg" width="60%" height="60%">
                    </center> 
@@ -1371,6 +1392,40 @@ float angleKnee = calculateAngle3D (hip, knee, ankle);
               Different Companies have their own way of defining the next test types, so we follow the ISTQB (International Software Testing Qualifications Board) definitions.  
               
           </p>
+
+          <b> System Testing</b>
+          <p class="toJustify">
+              We had to test our application from one end to another, so after we finished the requirements, Unit and Integration tests we performed this type of testing. In Unity and other Game Engines, it is very hard to automate testing, because you need to check interactions between objects. Unity provides a Test Runner tool, but it is appropriate for only Unit and Integration Tests. To automate the verification of the entire app we had to recreate the scenes from runtime, which would have been time consuming and inefficient. Instead, we manually checked the behaviour running through all features once.  When the found faults were fixed we repeated the cycle, gradually improving the software.
+          </p>
+
+          <b> Stress Testing</b>
+          <p class="toJustify">
+              Stress testing is a non-functional technique that is used to observe specific results when nearing a breaking point. It is a subset of performance testing thus allowing us to monitor and analyze any failures that occur. In regards to the project it used to verify if the system handles the post request from the unity application and successfully stores the data into a database. This was done using VSTS (Visual Studio Team Services)
+            <Br>
+              <br>
+              Each test case has 4 different graphs named as: Performance, Throughput, Errors and Tests. The userload is static through out with the test duration lasting 1 minute. The performance graph indicates the average response time along with the throughput which shows how many requests it is receiving within a second. The error and test graph are self explanatory.
+          </p>
+          <div class="subheading mb-3"> Post request to server hosted on Azure </div>
+
+          <center> <img src="img/postReqServer.jpg" width="90%" height="90%"></center>
+          <div class="subheading mb-3"> Post request to server hosted locally</div>
+
+          
+          <center> <img src="img/postReqLocal.jpg" width="90%" height="90%"></center>
+          <p class="toJustify">
+              On the Unity side, we test how the program detects normal movements of the joints at a constant rate. Furthermore, we examined how the speech recognition API behaves with different voices or accents
+          </p>
+
+          <b> Load Testing </b>
+          <p class="toJustify">
+              Load testing is another type of performance test that was carried out. It was used to determine the QOS (quality of service) based on large amount of user requests. We created virtual users which simultaneously accessed the URL. It granted us critical information such a the average response time and the number of errors generated. It increased our confidence in the scalability and reliability of the system as it could handle large amount of requests. The results below show a total of 2923 requests being received over a span of two minutes.
+        </p>
+
+        <div class="subheading mb-3"> URL receiving large amount of requests</div>
+        <center> <img src="img/loadUrlLocal.jpg" width="90%" height="90%"></center>
+
+        </div>
+
           <b> Unit Testing</b>
 
           <p class="toJustify">
@@ -1385,6 +1440,7 @@ float angleKnee = calculateAngle3D (hip, knee, ankle);
           <center> 
               <img src="img/nodeTest.jpg" width="50%" height="50%">
             </center>
+
             <b> Integration Testing</b>
             <p class="toJustify">
                 We used integration tests to see how Kinect module binds with the component that gives feedback based on the pose. In addition, we had to check the integration with the database. The Bottom-Up method was used to code the lower level components first and then join them together to form bigger clusters. Those combined components were tested which allowed it to move upwards in the hierarchical structure of the program, creating a fully functional app.
@@ -1394,10 +1450,7 @@ float angleKnee = calculateAngle3D (hip, knee, ankle);
             </center>
 
           </center>
-          <b> System Testing</b>
-          <p class="toJustify">
-              We had to test our application from one end to another, so after we finished the requirements, Unit and Integration tests we performed this type of testing. In Unity and other Game Engines, it is very hard to automate testing, because you need to check interactions between objects. Unity provides a Test Runner tool, but it is appropriate for only Unit and Integration Tests. To automate the verification of the entire app we had to recreate the scenes from runtime, which would have been time consuming and inefficient. Instead, we manually checked the behaviour running through all features once.  When the found faults were fixed we repeated the cycle, gradually improving the software.
-          </p>
+
 
           <b> Acceptance Testing</b>
           <p class="toJustify">
@@ -1405,10 +1458,10 @@ float angleKnee = calculateAngle3D (hip, knee, ankle);
           </p>
           <center>
 
-          
+
 
           
-          <table id="testing"class="table-md table table-bordered" style="font-size:14px">
+          <table id="testingTable"class="table-md table table-bordered" style="font-size:14px">
               <thead class="thead-light">
                 <tr  align="center"><th>Test ID</th><th>Test Scenario</th></tr>
               </thead>
@@ -1578,36 +1631,30 @@ float angleKnee = calculateAngle3D (hip, knee, ankle);
 
                             <center>
                                 <img src="img/test9.jpg" width="40%" height="40%">
-
+                              
                             </center>
+                            <br>
+                            <h3 class="mb-3">Client and User Feedback</h3>
+                            
+                            <b> From The Client:</b>
+                            <p class="toJustify">
+                              "Rares, please pass the following onto the rest of the team From my perspective, I think you and the team, but you in particular, as the leader of your group, have done an outstanding job. You were set a very difficult and challenging project, something new, something exploratory... and not only did you engage really well and sensitively with your key client contacts Mark and Dimitry, but the way in which you absorbed the information they provided and rose to the challenge to create a working prototype has been fantastic. You handled the technical challenges extremely well... reached out with questions and concerns when you had them, made sure there was a regular stream of project updates and statuses, which from a communication point of view is really important... because it can be all too easy to bury your head in the technology and lose sight of the impact on a person’s life you are trying to have. To the great credit of you and your team, your passion and commitment has been unrelenting over the course of this project. You set yourselves a high and challenging goal, and have made tremendous progress which I think has exceeded what we thought was possible given the challenges you were dealing with "
 
+                            </p>
 
-          <b> Stress Testing</b>
-          <p class="toJustify">
-              Stress testing is a non-functional technique that is used to observe specific results when nearing a breaking point. It is a subset of performance testing thus allowing us to monitor and analyze any failures that occur. In regards to the project it used to verify if the system handles the post request from the unity application and successfully stores the data into a database. This was done using VSTS (Visual Studio Team Services)
-            <Br>
-              <br>
-              Each test case has 4 different graphs named as: Performance, Throughput, Errors and Tests. The userload is static through out with the test duration lasting 1 minute. The performance graph indicates the average response time along with the throughput which shows how many requests it is receiving within a second. The error and test graph are self explanatory.
-          </p>
-          <div class="subheading mb-3"> Post request to server hosted on Azure </div>
+                            <b> From The User</b>
+                            <p class="toJustify">
+                              “The complexities of multiple sensory impairment are difficult to understand for most people. Dolga and his team managed to appreciate those complexities and apply logical thinking to the problem. Both the concept and practical solution developed are way beyond what I expected. I believe that this solution will be a significant step along the path towards a cure for paralysis.”  
+Mark Pollock – Explorer & Collaboration Catalyst at the Mark Pollock Trust"
+                            </p>
 
-          <center> <img src="img/postReqServer.jpg" width="90%" height="90%"></center>
-          <div class="subheading mb-3"> Post request to server hosted locally</div>
+                            <b> From Michael</b>
+                            <p class="toJustfy">
+                             "  Passion, seeking to understand, research, attention for detail, keeping us informed and engaged every step of the way, going beyond in helping us to next steps beyond the current project.
+I loved the outcome and I want to make sure that we can give it due attention for next steps.
+I can see it helping with the original use case, but also in other applications, such as vestibular rehabilitation, proprioception, convalescence,…"
+                            </p>
 
-          
-          <center> <img src="img/postReqLocal.jpg" width="90%" height="90%"></center>
-          <p class="toJustify">
-              On the Unity side, we test how the program detects normal movements of the joints at a constant rate. Furthermore, we examined how the speech recognition API behaves with different voices or accents
-          </p>
-          <b> Load Testing </b>
-          <p class="toJustify">
-              Load testing is another type of performance test that was carried out. It was used to determine the QOS (quality of service) based on large amount of user requests. We created virtual users which simultaneously accessed the URL. It granted us critical information such a the average response time and the number of errors generated. It increased our confidence in the scalability and reliability of the system as it could handle large amount of requests. The results below show a total of 2923 requests being received over a span of two minutes.
-        </p>
-
-        <div class="subheading mb-3"> URL receiving large amount of requests</div>
-        <center> <img src="img/loadUrlLocal.jpg" width="90%" height="90%"></center>
-
-        </div>
 
         <b>Compatibility Testing  </b>
         <p class="toJustify">
@@ -1701,17 +1748,28 @@ float angleKnee = calculateAngle3D (hip, knee, ankle);
                     </table>
                   </div>
           </center>
-          <b> Automated and Cntinous Integration Testing</b>
+          <b> Automated and Continous Integration Testing</b>
           <p class="toJustify">
               As previously mentioned in Unit and Integration Testing we used NSubstitute to create automated tests. In addition, we wanted to have automatic builds as well. To achieve this, we used Travis CI, a continuous integration tool. We linked GitHub project with our Travis account and created bash scripts to build and run tests every time we pushed to GitHub. If the build or at least one test failed a notification email with details is sent to the developer who pushed to the branch.  After fixing the failed test we reran all the tests to ensure that no new bug were introduced.
           </p>
-          <img src="img/automated.jpg" width="80%" height="80%">
+          <center>
+            <img src="img/automated.jpg" width="80%" height="80%">
+
+          </center>
       </section>
 
       <section class="content-section p-3 p-lg-5 d-flex flex-column" id="evaluation">
           <div class="my-auto">
             <h2 class="mb-3">Evaluation</h2>
-            
+            <div class="content-item d-flex flex-column flex-md-row mb-3">
+              <div class="resume-content mr-auto">
+                <h3 class="mb-0">Bug Table</h3>
+                <center>
+                  <img src="img/bug.jpg" width="80%" height="90%">
+
+              </center>
+              </div>
+            </div>
 
             <div class="content-item d-flex flex-column flex-md-row mb-3">
                 <div class="resume-content mr-auto">
@@ -1723,12 +1781,7 @@ float angleKnee = calculateAngle3D (hip, knee, ankle);
                 </div>
               </div>
 
-              <div class="content-item d-flex flex-column flex-md-row mb-3">
-                  <div class="resume-content mr-auto">
-                    <h3 class="mb-0">Bug Table</h3>
-  
-                  </div>
-                </div>
+
 
                 <div class="content-item d-flex flex-column flex-md-row mb-3">
                     <div class="resume-content mr-auto">
@@ -1889,7 +1942,29 @@ float angleKnee = calculateAngle3D (hip, knee, ankle);
 
               <div class="content-item d-flex flex-column flex-md-row mb-3">
                   <div class="resume-content mr-auto">
-                    <h3 class="mb-0">Deployment Manual</h3>
+                    <h3 class="mb-2">Deployment Manual</h3>
+                    <ol>
+                      <li>
+                          	Choose a computer that has a USB 3 Port and 4 GB RAM memory and runs Windows 10
+
+                      </li>
+                      <li>
+                          Install Kinect SDK: <a href="https://www.microsoft.com/en-us/download/details.aspx?id=44561" target="_blank"> Click here</a> 
+
+                      </li>
+                        Install Microsoft runtime speech recognition: <a href="https://www.microsoft.com/en-us/download/details.aspx?id=27225" target="_blank"> Click here </a>
+
+                      <li>
+                          Install Kinect Language Pack: <a href="https://www.microsoft.com/en-us/download/details.aspx?id=43662"> Click here</a>
+
+                      </li>
+                       To play the application just click SoundTherapy.exe file
+
+                      <li>
+                          If you want to open it in the development environment - Unity, choose Open Project and select the “VirtualTherapy” folder
+
+                      </li>
+                    </ol>
 
   
                   </div>
