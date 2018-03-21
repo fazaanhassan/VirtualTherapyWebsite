@@ -190,6 +190,7 @@
           <div class="col-sm-4">
               <img class="mb-0 rounded-circle" src="img/rares.jpg" width="150px">
               <ul class="list-unstyled">
+                <br>
                   <li>Rares Dolga</li>
                   <li> Team Leader</li>
                   <li> Front End Developer</li>
@@ -201,6 +202,7 @@
           <div class="col-sm-4">
               <img class="mb-0 rounded-circle" src="img/fazaan.jpg" width="150px">
               <ul class="list-unstyled">
+                <br>
                   <li>Fazaan Hassan</li>
                   <li>Tester</li>
                   <li> Back End Developer</li>
@@ -212,6 +214,7 @@
             <div class="col-sm-4">
                 <img class="mb-0 rounded-circle" src="img/cavan.jpg" width="150px">
                 <ul class="list-unstyled">
+                    <br>
                     <li>Cavan Black</li>
                     <li>Audio and Visual Lead</li>
                     <li>Researcher</li>
@@ -976,32 +979,27 @@
             <div class="resume-content mr-auto">
               <h3 class="mb-0">Potential Devices</h3>
               <p class="toJustify">
-                  Sensors are a key aspect for our project. We required high quality ‘six degrees of freedom’ devices to retrieve the user’s position in 3D space. This is done in terms of coordinates and relative angles of joints. If the data received is not accurate enough, the overall feedback outputted to the user will have faults. 
-
+                  Sensors are a key aspect of our project. We required high quality six degrees of freedom devices to get the position in 3D space of the user's joints. If the data received is not accurate enough the given feedback will have faults.
               </p>
                   <div class="subheading mb-2">Polhemus Fast-Track</div>
                   <p class="toJustify">
-                      It is a promising motion track solution that uses magnetic sources to detect position of smaller devices mounted on the user’s joints. Data received from this sensor is in real time, and their experiments suggest that there is no latency. Also, occlusion does not represent a problem, because the main joints have individual sensors [1]. Occlusion is when one body (including bones), covers another joint, causing obscurity.
+                      It is a promising motion track solution that uses the magnetic source to detect the position of smaller devices mounted on the user's joints. Data received from this sensor is in real time, and their experiments suggest that there is no latency. Also, the occlusion does not represent a problem in this scenario, because main joints have individual sensors. [1]
                       <br><br>
-                      Although this is a good solution in terms of data precision, it is very expensive and exceeds our budged for the project. Furthermore, it requires a considerable amount of time to integrate with an external software so that it can produce 3D sounds.
-
+                      Although this is a good solution in terms of data precision, it is very expensive and exceeds our budget for the project. Furthermore, it requires a considerable amount of time to integrate it with a software that can produce 3D sounds.
                   </p>
                   <div class="subheading mb-2">XSENS MV</div>
                   <p class="toJustify">
-                      It is a full body motion analysis system capable of giving 3D joint angles, orientation of bones and centre of mass [2]. The first disadvantage is represented by cost - 35,350 Euro is way beyond our budget. Secondly, it has a small delay in sending data by the method of wireless communication and the use of numerous cables. This would not be practical for the user.  Although, compared with Polhenus it has the advantage that it gives the center of mass information 
-
+                      It is a full body motion analysis system capable of giving 3D joint angles, the orientation of bones and centre of mass [2]. The first disadvantage is can be seen by cost; 35,350 Euro is way beyond our budget. Secondly, it has a small delay in sending data by wireless communication and using cables would not be practical for the user. Although, compared with Polhemus it has the advantage that it gives the centre of mass information.
                   </p>
 
                   <div class="subheading mb-2">Notch Sensors</div>
                   <p class="toJustify">
-                      Our supervisor Simon suggested these sensors as they are cheap and offer reasonable results when gathering joint position. The problem is that the only way they display real time data is by an android application developed by the company. There is no existing API hence making it hard to program as we require a continuous flow of body segments positions to be used in our own piece software for producing 3D sound.  Being composed from 6 sensors, it would be impossible for us to separately track all 20 joints that we need for calculating the pose of a user. Research also suggests that the sensor interferes with metallic surrounding thus obscuring results [3].
-
+                      Our supervisor Simon suggested them as they are cheap and offer reasonable results when gathering joint position. Main obstacle we faced with this sensor is that it display real-time data only using a android application. No existing API makes it considerably hard, to take a continuous flow of body segments positions and use them in our own software for producing 3D sound.  Being composed of 6 sensors, it would be impossible for us to separately track all 20 joints that we need for calculating the pose of a user [3].
                   </p>
 
                   <div class="subheading mb-2">Kinect V2</div>
                   <p class="toJustify">
-                      Kinect is a depth sensor created by Microsoft that outputs the skeleton position of a user in 3D space using the infrared light and RGB camera. It is a cheap and robust solution, with good documentation and online support.<b>  We decided to go with Kinect,</b> because compared with all previous solutions, it offers the possibility of connecting with Unity and because it offers a perfect balance between cost and performance. This part was vital for us because we needed a game engine or another piece software capable of producing mixed reality applications. Also, it provides a SDK that returns the position of up to 25 joints [4]. The device has very performant audio capturing function as well. This is an important aspect for designing a voice-command based user interface for visually impaired people. However, when compared with the previous solutions it does not offer such good results for occlusion. We can to try to reduce this impact by approximating position and inbuilt functions to filter data from interfered joints.
-                  </p>
+                      Kinect is a depth sensor created by Microsoft that gives the skeleton position of a user in 3D space, using infrared light and a RGB camera. It is a cheap and robust solution, with good documentation and online support. <b> We decided to go with Kinect,</b> because compared with all the previous solutions, it offers the possibility of connecting with Unity and because it provides a perfect balance between cost and performance. This part was vital for us because we needed a game engine or other software capable of producing mixed reality applications. Also, it provides an SDK that returns the position of up to 25 joints [4]. The device has very performant audio capturing functions as well. This is an important aspect of designing a voice command-based user interface for visually impaired persons. When compared with the first solutions it does not offer such good results for occlusion. However, we try to reduce this impact by approximating the position of interfered joints and filtering data.                  </p>
 
             </div>
           </div>
@@ -1044,9 +1042,7 @@
                     
                 </p>
                 <p class="toJustify">
-                    Boo language is like python, which it makes easy to learn and use, but there were few documentations for programming Kinect with Boo.
-                    The last 2 are the most popular henceforth <b> we have chosen to program in C#. </b>  Reason being is, most of us are familiar with object oriented programming  languages such as Java, which is similar with C#. If we would have written in JavaScript, there would have been issues with script compilation for premade libraries which we will discuss later below. Apart from this, there is no performance advantages of one language over the other.  
-
+                    The last 2 are the most popular henceforth <b>we have chosen to program in C#.</b> The reason being, we are familiar with object-oriented programming languages such as Java, which is similar to C#. If we had chosen to write in JavaScript, there would have been issues with script compilation for premade libraries which we will discuss later below. Apart from this, there are no performance advantages of one language over the other.  
                 </p>
 
                  <b> Server Side Development</b>
@@ -1059,7 +1055,7 @@
                 </p>
                 <p class="toJustify">
                     <b> For the server part we have used Node JS.</b> Alternatives include Django, PHP, Ruby, but node.js has multiple advantages over all.
-                    We have decided to use Node JS due to previous experience. This saved time as we did not have to learn a new backend programming language. It also allows the construction of real time web apps, in which both the client and the server can initiate requests. Being an extension of javascript the documentation provided showed that connection of database drivers were can be easily implemented. Also, it can handle a huge number of simultaneous requests which means high scalability. This is important as Microsoft would like to further develop on the application in the future.
+                    We have decided to use Node JS due to previous experience. This saved time as we did not have to learn a new backend programming language. It also allows the construction of real time web application, in which both the client and the server can initiate requests. Being an extension of javascript the documentation provided showed that connection of database drivers were can be easily implemented. Also, it can handle a huge number of simultaneous requests which means high scalability. This is important as Microsoft would like to further develop on the application in the future.
                     
                     </p>
                     
@@ -1099,27 +1095,24 @@
                   <div class="subheading mb-2">	OpenNI  NITE
                     </div>
                     <p class="toJustify">
-                       The OpenNI is an API used to initialise devices  that contain depth sensors compatible with Prime-sense form application code. We need to start the depth sensor when the unity application is run, get data from it, and stop it on user’s command [6]. For detecting the human body and accurate joint position from Kinect depth images, the NITE library is used.
-
+                        OpenNi is an API used to initialise devices, that contain depth sensors compatible with PrimeSens, form application code. We need it to start the depth sensor when the unity application is run, get data from it, and stop it on user’s command [6]. For detecting the human body and accurate joint position from Kinect depth images, NITE library is used.
                     </p>
                   <div class="subheading mb-2">Unity Kinect MS-SDK</div>
                     <p class="toJustify">
-                        This is a library that allows us to map data from Kinect to an avatar that represents the human body in a unity world. It contains wrapper classes that make the transformation, using basic mathematical operations like matrix multiplications. As our application needs to initialise and stop the device, it contains drivers necessary for openNI and the kinect sensor. Also, it provides high level functions for using Kinect features. Currently, it does not have any other competitor libraries that uses Kinect for skeleton tracking <b>hence why we are limited to use this one. </b>
-                      </p>
+                        This is a library that allows us to map data from Kinect to an avatar that represents the human body in unity world. It contains wrapper classes that make this transformation, using basic mathematical operations like matrix multiplications. As our application needs to initialise and stop the device, it contains drivers necessary for openNI and our sensor. Also, it provides higher level functions for using Kinect features. Currently, it does not have any other competitor libraries that use Kinect for skeleton tracking, <b> hence why we are limited to use this one.</b>
+                    </p>
 
                       <div class="subheading mb-2"> OpenPose plus SMPLify
                         </div>
                       <p class="toJustify">
-                          A common problem with this software is the lack of integration with Unity. This is required for the augmented part of our project causing problems as no documentation is provided on how to connect the output of library with the game engine we use. This might be considered as an alternative solution in the future of the project, because SMPLify announced that they are working on creating a Unity plugin. Therefore, the only big problem remaining is connecting the avatar to continuous data. However, this cannot be achieved as SMPLify only works on a single image [10]. It is worth mentioning that this library uses high optimisation suggesting that the computation costs for each image is high. Computing a continuous stream of images would not give real time results as the Lag in the application would be high.
-                        </p>
+                          An alternative to the OpenNI, NITE and MS combination is OpenPose plus SMPL. It is a 2D machine learning, real-time pose estimation library, where up to 18 body key points [9] are determined. This library yields great accuracy, hence dealing well with occlusion. A rule-based algorithm can detect joint alignment just with 2D data, for example, detect how bent the knees are without depth data, by calculating the relative position of angle joints. 
+                      </p>
                         <p class="toJustify">
                             However, we have not chosen this solution, because the creation of 3D audio feedback involves applying sound on objects in 3D space. Without the third axis, it is impossible to create objects that mimic our user and apply sound towards it from different directions. A solution to this problem would be the use of SMPLify. This is a machine learning software that can create 3D realistic human models from 2D data.  
-  
                           </p>
 
                           <p class="toJustify">
-                              A common problem with this software is the lack of integration with gaming engines. This is required for the augmented part of our project causing problems as no documentation is provided on how to connect that avatar with real time streaming of data. This might be considered as an alternative solution in the future of the project, because SMPLify announced that they are working on creating a unity plugin. Therefore, the only big problem remaining is connecting the avatar to continuous data. However, this cannot be achieved as SMPLify only works on a single image [10]. It is worth mentioning that this library uses CNN (convolutional neuronal networks) suggesting that the computation costs for each image is high. Computing a continuous stream of images would not give real time results.
-    
+                              A common problem with this software is its’ lack of integration with Unity. This is required for the augmented part of our project causing problems as no documentation is provided on how to connect the output of library with the game engine we use. This might be considered as an alternative solution in the future of the project because SMPLify announced that they are working on creating a Unity plugin. Therefore, the only big problem remaining is connecting the avatar to continuous data. However, this cannot be achieved as SMPLify only works on a single image [10]. It is worth mentioning that this library uses high optimisation suggesting that the computation costs for each image are high. Computing a continuous stream of images would not give real-time results as the lag in the application would be high.    
                             </p>
                           <b> Speech Recognition</b>
                           <br clear="all" /><br />
@@ -1129,8 +1122,7 @@
                             <div class="subheading mb-2"> Google Speech API
                               </div>
                             <p class="toJustify">
-                                This is a known and powerful API that recognizes around 100 languages. It runs on googles cloud services hence why we considered this as a disadvantage. If no internet connection is present, then the application becomes impractical for visual impaired users, as they have no way of interacting with it. 
-      
+                                This is a known and powerful API that recognizes around 100 languages. It runs on cloud services which we considered this as a disadvantage. If no internet connection is present, then the application becomes impractical for visually impaired users, as they have no way of interacting with it.      
                               </p>
 
                               <div class="subheading mb-2"> Microsoft Runtime Speech recognition
@@ -1141,22 +1133,20 @@
                                 </p>
                               <b> 3D Sound Effect</b>
                               <br clear="all" /><br />
-
+                                
                               
                               <div class="subheading mb-2"> Oculus Rift Spatializer
 
                                 </div>
                               <p class="toJustify">
-                                  This plugin can be used in many game engines and has good documentation. Also, it offers the possibility to customize the effects of the sound. It has the disadvantage that it does not imitate the reflexion of sounds from walls very well. In this case the virtual experience we are trying to achieve will not be immersive. 
-
+                                  This plugin can be used in many game engines and has good documentation. Also, it offers the possibility to customize the effects of the sound. It has the disadvantage that it does not imitate the reflexion of sounds from walls very well. In this case, the virtual experience we are trying to achieve will not be immersive.
                                 </p>
 
                                 <div class="subheading mb-2"> Microsoft HRTF (Head related transfer function) spatializer
 
                                   </div>
                                 <p class="toJustify">
-                                    Unity already contains this plugin, making it easy to use and configure. <b> We have chosen the Microsoft HRTF</b>, because it offers functions to amplify and reduce noise for different room sizes. Sounds can be heard from left and right directions with walls also reflecting noise signals. Because of this the user can easily locate the source of a given sound. This is a clear advantage over the Oculus rift technology making it suitable to achieve our requirements.
-
+                                    Unity already contains this plugin, making it easy to use and configure. <b>We have chosen the HRTF</b> because it offers functions to amplify and reduce noise for different room sizes. Sounds can be heard from the left and right directions with walls also reflecting noise signals. Because of this, the user can easily locate the source of a given sound. This is a clear advantage over the Oculus Rift technology making it suitable to achieve our requirements.
                                   </p>
                     </div>
 
@@ -1174,8 +1164,7 @@
                     </p>
                     <div class="subheading mb-3">Exponential Filter</div>
                     <p class="toJustify">
-                        This is a smoothing filter used for data when a sudden change appears. It applies one exponential function to smooth the input from Kinect. After a period of experimentation, we had observed that this filter does not perfectly follows the data trend in the abstract movement of joints in motion [13].
-
+                        This is a smoothing filter used for data when a sudden change appears. It applies one exponential function to smooth the input from the Kinect. After a period of experimentation, we had observed that this filter does not perfectly follow the data trend in the abstract movement of joints in motion [13].
 
                     </p>
                     <div class="subheading mb-3">Double Exponential Filter</div>
@@ -1192,8 +1181,7 @@
               <div class="resume-content mr-auto">
                 <h3 class="mb-1">Final Decision</h3>
                 <p class="toJustify">
-                    Our final solution consists of a Kinect V2 Sensor to get joint position from the user, and Unity creating the 3D sound effect. Our language of choice was C# for local application and node.js for the backend programming. We chose to use MS-DK Kinect from the Unity Asset Store with OpenNi to control the Kinect sensor and retrieve data from it. This library also contained wrappers for transforming input into “unity spatial coordinates” allowing us to map to an avatar. We also decided to use the double Exponential Filter to predict the continuous flow data and reduce the phenomenon of occlusion as much as possible.  We also decided to use the Microsoft HRTF spatializer to create the 3D sound effect. 
-
+                    Our final solution consists of a Kinect V2 Sensor to get joint position from the user, and Unity for creating the 3D sound effect. Our language of choice was C# for the local application and nodeJs for the backend programming. We chose to use MS-DK Kinect from the Unity Asset Store with OpenNi to control the Kinect sensor and retrieve data from it. This library also contained wrappers for transforming input into “Unity spatial coordinates” allowing us to map to an avatar. We also decided to use the double Exponential Filter to predict the continuous flow data and reduce the phenomenon of occlusion as much as possible.  We used the Microsoft HRTF spatializer to create the 3D sound effect.
                 </p>
               </div>
             </div>
